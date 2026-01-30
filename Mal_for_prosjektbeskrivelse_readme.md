@@ -15,11 +15,12 @@
 Beskriv kort hva dere skal lage.
 
 - Dette prosjektet er en simulert database av et bibliotek.
-- Det er mulig å bestille og låne bøker og levere de.
+- Det er mulig å bestille og låne bøker (og levere de kanskje?)
 - Dette viser kompetansen min i databaser og tabeller.
 
 ### Målgruppe
-Hvem er løsningen laget for? (idk)
+Hvem er løsningen laget for? 
+- Lage database som kan registrere lån/valg av data
 
 ---
 
@@ -27,11 +28,13 @@ Hvem er løsningen laget for? (idk)
 
 Systemet skal minst ha følgende funksjoner:
 
-1. Logg in for bruker 
-2. Logg in for admin
-3. Låne/bestille bøker  
-4. Se logg av tidligere lånte bøker (bruker)
-5. Se logg av alle lånte bøker (admin) 
+1. Logg in for kunde & bibliotekar
+2. Hjemme side for kunde
+3. Hjemme side for bibliotekar
+4. Se bøker å låne
+5. Låne/bestille bøker (kunde) 
+6. Se logg av tidligere lånte bøker (kunde)
+7. Se logg av alle kunder og lånte bøker (bibliotekar) 
 
 *(Legg til flere hvis nødvendig)*
 
