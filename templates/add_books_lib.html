@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New books</title>
+    <title>New books (librarian)</title>
 </head>
-<body>
-    
-    <h1>Add new books</h1>
-    <h3>Register new book:</h3>
-    <input type="Title of book:">
-    <input type="Author:">
 
+<body>
+
+    <h1>Add new books</h1>
+    <h3>Register a new book</h3>
+
+    <form method="POST" action="{{ url_for('register')}}">
+
+        <label for="bok_navn">New book:</label> <br>
+        <input type="text" id="newBook" name="newBook" required> <br> <br>
+
+        <label for="bok_forfatter">Authour's name:</label> <br>
+        <input type="text" id="bookAuthor" name="bookAuthor" required> <br> <br>
+
+        <button type="submit">Add new book to library</button>
+    </form>
 </body>
+
 </html>
