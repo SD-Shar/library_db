@@ -26,13 +26,17 @@ CREATE TABLE bestilling (
 );
 
 
-INSERT INTO kunder (fornavn, etternavn, epost, telefonnummer, passord_hash) VALUES 
+INSERT INTO brukere (fornavn, etternavn, epost, telefonnummer, passord_hash) VALUES 
 ( 'First', 'Customer', 'first@customer.com',  '12345678', 'password'),
 ( 'Hans', 'Holm', 'hans@epost.no', '91234567', 'hanshans'),
 ( 'Sofie', 'Olsen', 'book@lover.com', '47382910', 'mylittlepony'),
 ( 'Jonas', 'Berg', 'jonas@epost.com', '99887766', '12345'),
 ( 'Lisa', 'Karlsen', 'lisa.er@best.no', '45678901', 'lisaerbest'),
-( 'Ole', 'Nilsen', 'ole@epost.no', '92345678', 'norge123');
+( 'Ole', 'Nilsen', 'ole@epost.no', '92345678', 'norge123'),
+
+--(for admin/ibrarian - gonna have "librarian" as default )
+( 'New', 'Admin', 'librarian@access.com', '48711508', 'library1');
+
 
 
 INSERT INTO boker (bok_navn, bok_forfatter) VALUES
