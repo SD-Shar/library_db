@@ -37,7 +37,7 @@ def index():
         conn.commit()
         cursor.close()
         conn.close()
-        flash("User registered!", "success")
+        flash("User registered", "success")
         return redirect(url_for("login"))
 
     return render_template("index.html")
@@ -61,10 +61,13 @@ def login():
         cursor.close()
         conn.close()
         
-        if brukere and check_password_hash(brukere['passord_hash'], passord):
+        # if brukere and check_password_hash(brukere['passord_hash'], passord):
+        if brukere and brukere['passord_hash'] == passord:
             session['bruker_id'] = brukere['id']
             session['epost'] = brukere['epost']
             session['rolle'] = brukere['rolle']
+            
+            print(brukere['rolle'])
             
             if brukere['rolle'] == 'admin':
                 return redirect(url_for("homepage_lib"))
@@ -91,12 +94,11 @@ def browse_kunde():
         boker = mycursor.fetchall() #liste??
 
         return render_template("browse_kunde.html", boker=boker, epost=session['epost'])
-    return redirect(url_for("login"))
 
 
 
 # BORROW BOOKS
-@app.route('/login/borrowed_kunde')
+@app.route('/login/browse_kunde/borrowed_kunde')
 def borrowed_kunde():
     
     if "bruker_id" not in session:
@@ -134,7 +136,7 @@ def overview_lib():
     
     mydb = get_connection()
     mycursor = mydb.cursor()
-    mycursor.execute("SELECT * FROM brukere")
+    mycursor.execute("SELECT * FROM bestilling")
     customer = mycursor.fetchall() #liste??
     
     return render_template('overview_lib.html', customer=customer)

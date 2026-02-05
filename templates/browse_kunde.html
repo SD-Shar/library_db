@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find books</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <h1>Browse books to borrow</h1>
@@ -11,6 +12,26 @@
     <p>(add books here to click to borrow, alert
         "do you want to borrow [name of book by author]"
         and then added to list of your borrowed books)</p>
+
+        <table>
+
+            <tr>
+            <th>Book name</th>
+            <th>Author</th>
+        </tr>
+
+        {% for c in boker %}
+        <tr>
+            <td>{{c[0]}}</td>
+            <td>{{c[0]}}</td>
+            <td>
+                <a href="/browse_kunde/borrowed_kunde.html/{{c[0]}}"
+                onclick="return confirm('Borrow this book?');">Borrow book</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+        </table>
     
 </body>
 </html>
