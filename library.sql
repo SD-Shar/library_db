@@ -18,9 +18,9 @@ CREATE TABLE boker (
 
 # --Lage låne/bestillinger med id som primærnøkkel
 CREATE TABLE bestilling (
-    kunder_id INT NOT NULL,
+    bruker_id INT NOT NULL,
     bok_id INT NOT NULL,
-    FOREIGN KEY (kunder_id) REFERENCES kunder(id),
+    FOREIGN KEY (bruker_id) REFERENCES brukere(id),
     FOREIGN KEY (bok_id) REFERENCES boker(id),
     tid_av_bestilling TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -48,11 +48,12 @@ INSERT INTO boker (bok_navn, bok_forfatter) VALUES
 ('top 10 reasons why you are broke',  'Alyssa Gray');
 
 
-INSERT INTO bestilling (kunder_id, bok_id, tid_av_bestilling) VALUES
+INSERT INTO bestilling (bruker_id, bok_id, tid_av_bestilling) VALUES
 ( 1, 2, '2026-01-21'),
 ( 5, 1, '2026-01-29'),
 ( 3, 6, '2026-02-14'),
 ( 1, 4, '2026-02-18'),
-( 2, 2, '2026-02-19'),
+( 7, 2, '2026-02-19'),
 ( 4, 5, '2026-02-27'),
 ( 6, 3, '2026-03-10');
+

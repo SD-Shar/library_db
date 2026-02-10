@@ -22,11 +22,11 @@
 
         {% for c in boker %}
         <tr>
-            <td>{{c[0]}}</td>
-            <td>{{c[0]}}</td>
+            <td>{{c[1]}}</td>
+            <td>{{c[2]}}</td>
             <td>
-                <a href="/browse_kunde/borrowed_kunde.html/{{c[0]}}"
-                onclick="return confirm('Borrow this book?');">Borrow book</a>
+                <a href="{{ url_for('borrow_book', bok_id=c[0]) }}"
+                onclick="return confirm('Borrow this book? {{ c[1] }} by {{ c[2] }} ?');">Borrow book</a>
             </td>
         </tr>
         {% endfor %}

@@ -12,7 +12,7 @@
 
     <h1>Sign up</h1>
 
-    <form method="POST" action="{{ url_for('register') }}">
+    <form method="POST" action="{{ url_for('signup') }}">
 
         <label for="fornavn">First name:</label><br>
         <input type="name" id="fornavn" name="fornavn" required><br><br>
@@ -31,6 +31,8 @@
 
         <button type="submit">Sign up</button>
     </form>
+
+    <p>Already have an account? <a href="/login">Log in here!</a></p>
 
 
 

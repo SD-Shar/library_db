@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
 
     <h1>Homepage, librarian (admin)</h1>
+    <table>
+
+        <tr>
+
+            <th>Book name</th>
+            <th>Author</th>
+        </tr>
+
+        {% for c in boker %}
+        <tr>
+            <td>{{c[1]}}</td>
+            <td>{{c[2]}}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <br>
+    <br>
     
+    <a href="/login/homepage_lib/overview_lib">Book orders</a>
+    <a href="/login/homepage_lib/add_books_lib">Register new books</a>
+
+
 </body>
-</html>
+
+</html
