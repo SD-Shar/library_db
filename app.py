@@ -92,6 +92,9 @@ def login():
 @app.route('/login/browse_kunde')
 def browse_kunde():
     
+    if "epost" not in session:
+        return redirect(url_for("login"))
+    
     mydb = get_connection()
     mycursor = mydb.cursor()
     mycursor.execute("SELECT * FROM boker")
@@ -116,6 +119,7 @@ def borrowed_kunde():
                      FROM bestilling be
                      JOIN boker b ON be.bok_id = b.id WHERE be.bruker_id = %s ORDER BY be.tid_av_bestilling DESC""", (bruker_id,))
     borrowed_books = mycursor.fetchall()
+    
     
     return render_template("borrowed_kunde.html", borrowed_books=borrowed_books)
 
@@ -186,7 +190,7 @@ def add_books_lib():
             mycursor.close()
             mydb.close()
             
-            return redirect("login/homepage_lib")
+            return redirect("/login/homepage_lib")
     return render_template('add_books_lib.html', )
 
 

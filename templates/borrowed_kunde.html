@@ -8,6 +8,8 @@
 </head>
 <body>
 
+    <a href="/login/browse_kunde">&larr;</a>
+    
         <h1>Books</h1>
 
         <h3>Your borrowed books
@@ -15,14 +17,13 @@
 
         <table>
 
-            {% for c in boker %}
-
             <tr>
                 <th>Books you've borrowed:</th>
                 <th>Author name:</th>
-                <th>Date of borrowing:</th>
+                <th>Date of order:</th>
             </tr>
 
+            {% for c in borrowed_books %}
             <tr>
                 <td>{{ c[0] }}</td>
                 <td>{{ c[1] }}</td>
