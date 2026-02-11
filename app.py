@@ -150,12 +150,13 @@ def borrow_book(bok_id):
 @app.route('/login/homepage_lib')
 def homepage_lib():
     if session.get("rolle") == "admin":
+        
         mydb = get_connection()
         mycursor = mydb.cursor()
         mycursor.execute("SELECT * FROM boker")
         boker = mycursor.fetchall() #liste??
         return render_template("homepage_lib.html", epost=session['epost'], boker=boker)
-    return redirect(url_for("login"))
+        
 
 
 
