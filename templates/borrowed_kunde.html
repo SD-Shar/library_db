@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your borrowed books</title>
     <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
 
-    <a href="/login/browse_kunde">&larr;</a>
-    
+    <div class="mainPage">
+        <div class="backLink" id="backLink">
+
+            <a href="/login/browse_kunde">&larr;</a>
+
+        </div>
         <h1>Books</h1>
 
-        <h3>Your borrowed books
-        </h3>
+        <h2>Your borrowed books
+        </h2>
 
-        <table>
+       <div class="borrowed_books">
+         <table>
 
-            <tr>
+            <tr class="Titles">
                 <th>Books you've borrowed:</th>
                 <th>Author name:</th>
                 <th>Date of order:</th>
             </tr>
 
             {% for c in borrowed_books %}
-            <tr>
+            <tr class="borrowedUser">
                 <td>{{ c[0] }}</td>
                 <td>{{ c[1] }}</td>
                 <td>{{ c[2] }}</td>
@@ -33,8 +40,11 @@
             {% endfor %}
 
         </table>
+       </div>
+    </div>
 
-        
-    
+
+
 </body>
+
 </html>

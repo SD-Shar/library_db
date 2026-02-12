@@ -9,31 +9,35 @@
 </head>
 
 <body>
-    <a href="/login/homepage_lib">&larr;</a>
-    
-    <h1>Customers and what they've borrowed</h1>
-    <h2>Librarian page</h2>
 
-    <table>
-        <tr>
-            <th>Book</th>
-            <th>Borrowed by</th>
-            <th>Time of order</th>
-        </tr>
-        {% for c in bestilling %}
-        <tr>
-            <td>{{c[0]}}</td>
-            <td>{{c[1]}}</td>
-            <td>{{c[2]}}</td>
+    <div class="LIBoverview">
 
-        </tr>
-        {% endfor %}
+        <div class="backLink" id="backLink">
+            <a href="/login/homepage_lib">&larr;</a>
+
+        </div>
+
+        <h1>Customers and what they've borrowed</h1>
+        <h2>Librarian page</h2>
+
+        <table>
+            <tr class="Titles">
+                <th>Book</th>
+                <th>Borrowed by</th>
+                <th>Time of order</th>
+            </tr>
+            {% for c in bestilling %}
+            <tr class="orders">
+                <td>{{c[0]}}</td>
+                <td>{{c[1]}}</td>
+                <td>{{c[2]}}</td>
+
+            </tr>
+            {% endfor %}
 
 
-    </table>
-
-
-
+        </table>
+    </div>
 
 
 </body>

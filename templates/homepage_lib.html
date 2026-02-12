@@ -4,35 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Librarian Homepage</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
 
-    <h1>Homepage librarian (admin) - Welcome back!</h1>
-    <table>
+    <div class="homepageLIB">
 
-        <tr>
-            <th>Book name</th>
-            <th>Author</th>
-        </tr>
+        <h1>Homepage librarian (admin) - Welcome back!</h1>
 
-        {% for c in boker %}
-        <tr>
-            <td>{{c[1]}}</td>
-            <td>{{c[2]}}</td>
-        </tr>
-        {% endfor %}
+        <h2>Books in the library:</h2>
 
-    </table>
+        <table>
 
-    <br>
-    <br>
-    
-    <a href="/login/homepage_lib/overview_lib">Book orders</a>
-    <a href="/login/homepage_lib/add_books_lib">Register new books</a>
+            <tr class="libTitles">
+                <th>Book name</th>
+                <th>Author</th>
+            </tr>
 
+            {% for c in boker %}
+            <tr class="lib_books">
+                <td>{{c[1]}}</td>
+                <td>{{c[2]}}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+        <br>
+        <br>
+
+        <div class="LIB_links">
+
+            <div class="bookO">
+                <a href="/login/homepage_lib/overview_lib">Book orders</a>
+            </div>
+
+            <div class="bookN">
+                <a href="/login/homepage_lib/add_books_lib">Register new books</a>
+            </div>
+
+        </div>
+        
+    </div>
 
 </body>
 

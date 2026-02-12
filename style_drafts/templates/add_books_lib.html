@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New books (librarian)</title>
+    <link rel="stylesheet" href="try.css">
+</head>
+
+<body>
+    <div class="mainPage">
+
+
+        <div class="backLink" id="backLink">
+            <a href="/login/browse_kunde">&larr;</a>
+        </div>
+
+        <h1>Add new books</h1>
+        <h2>Register a new book</h2>
+
+        <div class="addBooks">
+            <form method="POST" action="{{ url_for('add_books_lib')}}">
+
+            <label for="bok_navn">New book:</label> <br>
+            <input type="text" id="bok_navn" name="bok_navn" required> <br> <br>
+
+            <label for="bok_forfatter">Authour's name:</label> <br>
+            <input type="text" id="bok_forfatter" name="bok_forfatter" required> <br> <br>
+
+            <button class="ADD_BOOK" type="submit">Add new book to library</button>
+
+        </form>
+        </div>
+    </div>
+</body>
+
+</html>

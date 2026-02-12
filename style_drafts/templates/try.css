@@ -1,0 +1,238 @@
+/* GENERAL */
+
+body {
+    background-color: rgb(56, 4, 4);
+}
+
+h1 {
+    font-family: 'Georgia';
+    color: rgb(255, 224, 224);
+}
+
+h2 {
+    font-family: 'Garamond';
+    color: rgb(190, 128, 128);
+}
+
+h3 {
+    font-family: 'Garamond';
+    color: white;
+}
+
+.browse_books {
+    display: flex;
+    font-family: 'Garamond';
+}
+
+.backLink>a {
+    background-color: rgb(187, 98, 98);
+    color: black;
+
+    font-weight: bold;
+    font-size: x-large;
+
+    padding: 0.5%;
+
+    border-radius: 0.5vh;
+}
+
+.mainPage {
+    margin: 1%;
+}
+
+/* LOGIN OR SIGNUP */
+button {
+
+    color: white;
+
+    font-family: 'Garamond';
+    font-weight: bold;
+    font-size: large;
+    background-color: rgb(190, 128, 128);
+    padding: 0.5%;
+
+    border: 0.5vh solid rgb(95, 9, 9);
+    border-top: 0;
+    border-right: 0;
+    border-radius: 0.5vh;
+}
+
+.signUP_xtra {
+    font-family: 'Garamond';
+    font-weight: bold;
+    font-size: large;
+    color: rgb(190, 128, 128);
+}
+
+.signUP_xtra > p > a{
+    color: rgb(255, 224, 224);
+}
+
+
+
+/* HOMEPAGE BRUKER */
+
+table {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(187, 98, 98);
+    padding: 1%;
+    border-radius: 1vh;
+}
+
+table>div {
+    display: flex;
+    justify-content: space-between;
+}
+
+#borrowBTN {
+    background-color: rgb(95, 9, 9);
+    padding: 5%;
+    border-radius: 0.5vh;
+}
+
+#borrowBTN>a {
+    color: white;
+}
+
+#borrowLink {
+    background-color: rgb(95, 9, 9);
+    margin-right: 81vw;
+    padding: 1%;
+    border: 1vh solid rgb(187, 98, 98);
+    border-radius: 0.5vh;
+    border-right: 0;
+    border-top: 0;
+}
+
+#borrowLink>a {
+    color: rgb(255, 212, 212);
+    font-family: 'Garamond';
+    font-weight: bolder;
+}
+
+
+
+
+/* USER BORROWED PAGE */
+
+.UserBorrowed {
+    margin: 1%;
+}
+
+.borrowedBOOKS {
+    font-family: 'Garamond';
+}
+
+.bestillingTitles {
+    display: flex;
+    justify-content: space-around;
+    padding: 1%;
+}
+
+.borrowedUser {
+    display: flex;
+    justify-content: space-around;
+
+    background-color: rgb(241, 199, 199);
+    padding: 1%;
+
+    border-radius: 0.5vh;
+}
+
+
+/* LIBRARIAN HOMEPAGE  */
+
+.homepageLIB {
+    margin: 1%;
+}
+
+.Titles {
+    display: flex;
+    justify-content: space-around;
+
+    background-color: rgb(95, 9, 9);
+    color: rgb(241, 199, 199);
+    border-radius: 1vh;
+    padding: 1%;
+}
+
+.lib_books {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(241, 199, 199);
+    padding: 1%;
+    border-radius: 0.5vh;
+    margin: 1%;
+}
+
+.LIB_links {
+    display: flex;
+    margin: 1%;
+
+}
+
+.bookO {
+    background-color: rgb(95, 9, 9);
+    padding: 1%;
+    margin: 1%;
+    border-radius: 0.5vh;
+}
+
+.bookO>a {
+    color: rgb(241, 199, 199);
+}
+
+.bookN {
+    background-color: rgb(241, 199, 199);
+    padding: 1%;
+    margin: 1%;
+    border-radius: 0.5vh;
+}
+
+.bookN>a {
+    color: rgb(95, 9, 9);
+}
+
+/* LIBRARIAN OVERVIEW (besitlling) */
+
+.LIBoverview {
+    margin: 1%;
+}
+
+.orders {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(241, 199, 199);
+    border-radius: 0.5vh;
+    padding: 1%;
+    margin: 1%;
+}
+
+/* ADD MORE BOOKS */
+
+
+
+label {
+    color: rgb(241, 199, 199);
+    font-family: 'Garamond';
+    font-weight: bolder;
+    font-size: large;
+}
+
+input {
+    background-color: rgb(241, 199, 199);
+}
+
+.ADD_BOOK {
+    font-family: 'Garamond';
+    font-weight: bolder;
+    font-size: large;
+    background-color: rgb(190, 128, 128);
+    padding: 1%;
+
+    border: 1vh solid rgb(95, 9, 9);
+    border-top: 0;
+    border-right: 0;
+    border-radius: 0.5vh;
+}

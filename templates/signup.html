@@ -10,7 +10,9 @@
 
 <body>
 
-    <h1>Sign up</h1>
+   <div class="mainPage">
+
+     <h1>Sign up</h1>
 
     <form method="POST" action="{{ url_for('signup') }}">
 
@@ -32,8 +34,11 @@
         <button type="submit">Sign up</button>
     </form>
 
-    <p>Already have an account? <a href="/login">Log in here!</a></p>
+    <div class="signUP_xtra">
+        <p>Already have an account? <a href="/login">Log in here!</a></p>
 
+    </div>
+   </div>
 
 
 </body>

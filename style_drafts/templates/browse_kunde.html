@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find books</title>
+    <link rel="stylesheet" href="try.css">
+</head>
+
+<body>
+
+    <h1>Browse books to borrow</h1>
+
+    <h2>Logged in as example@email</h2>
+
+    <div class="browse_books">
+        <table>
+                <tr class="Titles">
+                    <th>Book name</th>
+                    <th>Author</th>
+                </tr>
+           
+
+            <td>Book1</td>
+            <td>Author</td>
+            <td>
+                <div class="BorrowBTN" id="borrowBTN">
+                    <a href="{{ url_for('borrow_book', bok_id=c[0]) }}"
+                        onclick="return confirm('Borrow this book? {{ c[1] }} by {{ c[2] }} ?');">Borrow book</a>
+
+                </div>
+            </td>
+
+
+        </table>
+    </div>
+
+    <p class="borrowed_link" id="borrowLink">
+        <a href="/login/browse_kunde/borrowed_kunde">See your borrowed books here.</a>
+    </p>
+</body>
+
+</html>

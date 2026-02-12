@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up - start page</title>
+    <link rel="stylesheet" href="try.css">
+</head>
+
+<body>
+
+    <div class="mainPage">
+        <h1>Sign up</h1>
+
+    <form method="POST" action="{{ url_for('signup') }}">
+
+        <label for="fornavn">First name:</label><br>
+        <input type="name" id="fornavn" name="fornavn" required><br><br>
+
+        <label for="etternavn">Last name:</label><br>
+        <input type="name" id="etternavn" name="etternavn" required><br><br>
+
+        <label for="epost">E-mail:</label><br>
+        <input type="email" id="epost" name="epost" required><br><br>
+
+        <label for="tlf">Phone Number:</label><br>
+        <input type="number" id="tlf" name="telefonnummer" required><br><br>
+
+        <label for="passord">Password:</label><br>
+        <input type="password" id="passord" name="passord" required><br><br>
+
+        <button type="submit">Sign up</button>
+    </form>
+
+    <div class="signUP_xtra">
+        <p>Already have an account? <a href="/login">Log in here!</a></p>
+
+    </div>
+    </div>
+
+
+</body>
+
+</html>
