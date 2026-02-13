@@ -115,6 +115,8 @@ def borrowed_kunde():
     
     mydb = get_connection()
     mycursor = mydb.cursor()
+    
+    # (had to ask chatgpt for this part)
     mycursor.execute("""SELECT b.bok_navn, b.bok_forfatter, be.tid_av_bestilling
                      FROM bestilling be
                      JOIN boker b ON be.bok_id = b.id WHERE be.bruker_id = %s ORDER BY be.tid_av_bestilling DESC""", (bruker_id,))
