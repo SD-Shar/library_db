@@ -12,15 +12,10 @@
 ## 1. Prosjektidé og problemstilling
 
 ### Beskrivelse
-Beskriv kort hva dere skal lage.
 
 - Dette prosjektet er en simulert database av et bibliotek.
-- Det er mulig å bestille og låne bøker (og levere de kanskje?)
+- Det er mulig å bestille og låne bøker for kunder, og å se bestillinger via admin.
 - Dette viser kompetansen min i databaser og tabeller.
-
-### Målgruppe
-Hvem er løsningen laget for? 
-- Lage database som kan registrere lån/valg av data
 
 ---
 
@@ -31,12 +26,12 @@ Systemet skal minst ha følgende funksjoner:
 1. Logg in for kunde & bibliotekar
 2. Hjemme side for kunde
 3. Hjemme side for bibliotekar
-4. Se bøker å låne
+4. Se bøker både fo rkunder og for bibliotekar
 5. Låne/bestille bøker (kunde) 
 6. Se logg av tidligere lånte bøker (kunde)
-7. Se logg av alle kunder og lånte bøker (bibliotekar) 
+7. Se logg av alle bestillinger (bibliotekar) 
+8. Legge til flere bøker (bibliotekar)
 
-*(Legg til flere hvis nødvendig)*
 
 ---
 
@@ -46,7 +41,7 @@ Systemet skal minst ha følgende funksjoner:
 - Python / HTML / CSS
 
 ### Rammeverk / Plattform / Spillmotor
-- Eksempel: Flask / Unity / Godot / .NET
+Flask / 
 
 ### Database
 - MariaDB
@@ -54,8 +49,6 @@ Systemet skal minst ha følgende funksjoner:
 ### Verktøy
 - GitHub
 - GitHub Projects (Kanban)
-- Eventuelle andre verktøy (no)
-
 ---
 
 ## 4. Datamodell
@@ -63,20 +56,51 @@ Systemet skal minst ha følgende funksjoner:
 ### Oversikt over tabeller
 
 **Tabell 1:**
-- Navn:
+- Navn: brukere
 - Beskrivelse:
++---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| id            | int(11)      | NO   | PRI | NULL    | auto_increment |
+| fornavn       | varchar(50)  | NO   |     | NULL    |                |
+| etternavn     | varchar(50)  | NO   |     | NULL    |                |
+| epost         | varchar(100) | NO   |     | NULL    |                |
+| telefonnummer | varchar(15)  | YES  |     | NULL    |                |
+| passord_hash  | varchar(255) | NO   |     | NULL    |                |
+| rolle         | varchar(10)  | NO   |     | bruker  |                |
++---------------+--------------+------+-----+---------+----------------+
+
 
 **Tabell 2:**
-- Navn:
+- Navn: boker
 - Beskrivelse:
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| id            | int(11)     | NO   | PRI | NULL    | auto_increment |
+| bok_navn      | varchar(50) | NO   |     | NULL    |                |
+| bok_forfatter | varchar(50) | NO   |     | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
 
-*(Minst 2–4 tabeller)*
+
+
+**Tabell 3:**
+- Navn: bestilling
+- Beskrivelse:
++-------------------+-----------+------+-----+---------------------+-------+
+| Field             | Type      | Null | Key | Default             | Extra |
++-------------------+-----------+------+-----+---------------------+-------+
+| bruker_id         | int(11)   | NO   | MUL | NULL                |       |
+| bok_id            | int(11)   | NO   | MUL | NULL                |       |
+| tid_av_bestilling | timestamp | YES  |     | current_timestamp() |       |
++-------------------+-----------+------+-----+---------------------+-------+
 
 ### Eksempel på tabellstruktur
 ```sql
-User(
-  id INT PRIMARY KEY,
-  username VARCHAR(50),
-  email VARCHAR(100),
-  password VARCHAR(255)
-)
+CREATE TABLE bestilling (
+    bruker_id INT NOT NULL,
+    bok_id INT NOT NULL,
+    FOREIGN KEY (bruker_id) REFERENCES brukere(id),
+    FOREIGN KEY (bok_id) REFERENCES boker(id),
+    tid_av_bestilling TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

@@ -64,13 +64,30 @@ button {
     color: rgb(190, 128, 128);
 }
 
-.signUP_xtra > p > a{
+.signUP_xtra>p>a {
     color: rgb(255, 224, 224);
 }
 
 
 
 /* HOMEPAGE BRUKER */
+
+
+.browse_books {
+    display: flex;
+    flex-direction: column;
+}
+
+.bookss {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(190, 128, 128);
+    margin: 1%;
+    padding: 1%;
+    border-radius: 0.5vh;
+
+}
 
 table {
     display: flex;
@@ -164,6 +181,9 @@ table>div {
     padding: 1%;
     border-radius: 0.5vh;
     margin: 1%;
+
+    font-family: 'Garamond';
+    font-weight: bold;
 }
 
 .LIB_links {
