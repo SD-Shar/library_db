@@ -17,6 +17,10 @@
 
         <h2>Logged in as, {{ session['epost'] }}</h2>
 
+        <p class="borrowed_link" id="borrowLink">
+            <a href="/login/browse_kunde/borrowed_kunde">See your borrowed books here.</a>
+        </p>
+
         <div class="browse_books">
             <table>
 
@@ -44,9 +48,7 @@
 
             </table>
 
-            <p class="borrowed_link" id="borrowLink">
-                <a href="/login/browse_kunde/borrowed_kunde">See your borrowed books here.</a>
-            </p>
+
         </div>
     </div>
 
