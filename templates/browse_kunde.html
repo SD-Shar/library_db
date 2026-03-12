@@ -23,12 +23,14 @@
                 <tr class="Titles">
                     <th>Book name</th>
                     <th>Author</th>
+                    <th>Available</th>
                 </tr>
 
                 {% for c in boker %}
                 <tr class="bookss">
                     <td>{{c[1]}}</td>
                     <td>{{c[2]}}</td>
+                    <td>{{c[3]}}</td>
                     <td>
                         <div class="BorrowBTN" id="borrowBTN">
                             <a href="{{ url_for('borrow_book', bok_id=c[0]) }}"

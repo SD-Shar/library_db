@@ -21,12 +21,14 @@
             <tr class="Titles">
                 <th>Book name</th>
                 <th>Author</th>
+                <th>Copies</th>
             </tr>
 
             {% for c in boker %}
             <tr class="lib_books">
                 <td>{{c[1]}}</td>
                 <td>{{c[2]}}</td>
+                <td>{{c[3]}}</td>
             </tr>
             {% endfor %}
 
