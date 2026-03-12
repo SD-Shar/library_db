@@ -57,3 +57,20 @@ INSERT INTO bestilling (bruker_id, bok_id, tid_av_bestilling) VALUES
 ( 4, 5, '2026-02-27'),
 ( 6, 3, '2026-03-10');
 
+
+
+ALTER TABLE boker ADD antall_boker VARCHAR(255);
+
+UPDATE boker SET antall_boker = '100' WHERE id = 2,
+UPDATE boker SET antall_boker = '15' WHERE id = 3,
+UPDATE boker SET antall_boker = '20' WHERE id = 4,
+UPDATE boker SET antall_boker = '12' WHERE id = 5,
+UPDATE boker SET antall_boker = '30' WHERE id = 6,
+UPDATE boker SET antall_boker = '6' WHERE id = 7,
+UPDATE boker SET antall_boker = '1' WHERE id = 8,
+UPDATE boker SET antall_boker = '3072' WHERE id = 9,
+UPDATE boker SET antall_boker = '10' WHERE id = 10,
+UPDATE boker SET antall_boker = '13' WHERE id = 11,
+UPDATE boker SET antall_boker = '2' WHERE id = 12,
+UPDATE boker SET antall_boker = '8' WHERE id = 13,
+UPDATE boker SET antall_boker = '5' WHERE id = 14;
