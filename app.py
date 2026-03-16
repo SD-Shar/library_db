@@ -99,6 +99,9 @@ def browse_kunde():
     mycursor = mydb.cursor()
     mycursor.execute("SELECT * FROM boker")
     boker = mycursor.fetchall() #liste??
+    
+    mycursor.close()
+    mydb.close()
 
     return render_template("browse_kunde.html", boker=boker, epost=session['epost'])
 
@@ -122,6 +125,9 @@ def borrowed_kunde():
                      JOIN boker b ON be.bok_id = b.id WHERE be.bruker_id = %s ORDER BY be.tid_av_bestilling DESC""", (bruker_id,))
     borrowed_books = mycursor.fetchall()
     
+    mycursor.close()
+    mydb.close()
+
     
     return render_template("borrowed_kunde.html", borrowed_books=borrowed_books)
 
@@ -140,7 +146,13 @@ def borrow_book(bok_id):
     
     mycursor.execute("INSERT INTO bestilling (bruker_id, bok_id) VALUES (%s, %s)", (bruker_id, bok_id)
     )
+    
+    mycursor.execute("UPDATE boker SET antall_boker = antall_boker -1 WHERE id = %s", (bok_id,))
     mydb.commit()
+    
+    mycursor.close()
+    mydb.close()
+
         
     return redirect(url_for("borrowed_kunde"))
 
@@ -159,6 +171,10 @@ def homepage_lib():
         mycursor = mydb.cursor()
         mycursor.execute("SELECT * FROM boker")
         boker = mycursor.fetchall() #liste??
+        
+        mycursor.close()
+        mydb.close()
+    
         return render_template("homepage_lib.html", epost=session['epost'], boker=boker)
         
 
@@ -172,6 +188,9 @@ def overview_lib():
         mycursor = mydb.cursor()
         mycursor.execute("SELECT * FROM bestilling")
         bestilling = mycursor.fetchall() #liste??
+        
+        mycursor.close()
+        mydb.close()
     
     return render_template('overview_lib.html', bestilling=bestilling)
 
@@ -186,11 +205,12 @@ def add_books_lib():
             
             name = request.form["bok_navn"]
             author = request.form["bok_forfatter"]
+            copies = request.form["antall_boker"]
             
             mydb = get_connection()
             mycursor = mydb.cursor()
             
-            mycursor.execute("INSERT INTO boker (bok_navn, bok_forfatter) VALUES (%s, %s)", (name, author))
+            mycursor.execute("INSERT INTO boker (bok_navn, bok_forfatter, antall_boker) VALUES (%s, %s, %s)", (name, author, copies))
             mydb.commit()
             mycursor.close()
             mydb.close()
