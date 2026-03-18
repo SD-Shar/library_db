@@ -6,6 +6,8 @@
 **2IMI:**\
 **lagd uke 5-7 2026:**
 
+**Utvidelse: prosjektoppgave til vår 2026**
+
 ---
 
 ### Individuelt prosjekt
@@ -28,6 +30,11 @@ bruker se og låne bøker.
 "Hvem er målgruppen?"
 - På denne nettsiden er målgruppen yngre folk som liker å lese,
 og de som har tilgang til nett og liker å bruke nettbaserte bestillinger.
+```
+**Utvidelse:**
+```markdown
+- Det er mulig å låne og levere tilbake bøker som kunde.
+- Det er lagt til "antall bøker" i boklisten. (også oppdatert for å legge til bøker)
 ```
 
 **Installasjon og kjøring av prosjektet:**
@@ -63,6 +70,10 @@ og de som har tilgang til nett og liker å bruke nettbaserte bestillinger.
 8. Se logg av alle bestillinger og lånte bøker (bibliotekar) 
 9. Legge til flere bøker (bibliotekar)
 10. (Data lagres i MariaDB)
+
+(Utvidelse for prosjektoppgave vår):
+12. Mulighet å levere tilbake bøker
+13. Antall bøker lagt til
 
 ---
 
