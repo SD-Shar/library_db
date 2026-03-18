@@ -120,7 +120,7 @@ def borrowed_kunde():
     mycursor = mydb.cursor()
     
     # (had to ask chatgpt for this part)
-    mycursor.execute("""SELECT b.bok_navn, b.bok_forfatter, be.tid_av_bestilling
+    mycursor.execute("""SELECT b.id, b.bok_navn, b.bok_forfatter, be.bok_id, be.tid_av_bestilling
                      FROM bestilling be
                      JOIN boker b ON be.bok_id = b.id WHERE be.bruker_id = %s ORDER BY be.tid_av_bestilling DESC""", (bruker_id,))
     borrowed_books = mycursor.fetchall()
@@ -147,6 +147,7 @@ def borrow_book(bok_id):
     mycursor.execute("INSERT INTO bestilling (bruker_id, bok_id) VALUES (%s, %s)", (bruker_id, bok_id)
     )
     
+    # ![15/3/26]
     mycursor.execute("UPDATE boker SET antall_boker = antall_boker -1 WHERE id = %s", (bok_id,))
     mydb.commit()
     
@@ -157,6 +158,28 @@ def borrow_book(bok_id):
     return redirect(url_for("borrowed_kunde"))
 
 
+# TILBAKE LEVERING
+@app.route('/login/browse_kunde/<int:bok_id>')
+def return_book(bok_id):
+
+    bruker_id = session['bruker_id']
+    
+    mydb = get_connection()
+    mycursor = mydb.cursor()
+    
+    # ![15/3/26]
+    mycursor.execute("DELETE FROM bestilling WHERE bruker_id = %s AND bok_id = %s LIMIT 1", (bruker_id, bok_id)
+    )
+    
+    # ![15/3/26]
+    mycursor.execute("UPDATE boker SET antall_boker = antall_boker +1 WHERE id = %s", (bok_id,))
+    mydb.commit()
+    
+    mycursor.close()
+    mydb.close()
+
+        
+    return redirect(url_for("borrowed_kunde"))
 
 
 
@@ -205,6 +228,8 @@ def add_books_lib():
             
             name = request.form["bok_navn"]
             author = request.form["bok_forfatter"]
+            
+            # ![15/3/26]
             copies = request.form["antall_boker"]
             
             mydb = get_connection()

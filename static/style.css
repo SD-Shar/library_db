@@ -42,7 +42,6 @@ h3 {
 
 /* LOGIN OR SIGNUP */
 button {
-
     color: white;
 
     font-family: 'Garamond';
@@ -82,7 +81,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(190, 128, 128);
+    background-color: rgb(233, 167, 167);
     margin: 1%;
     padding: 1%;
     border-radius: 0.5vh;
@@ -97,10 +96,6 @@ table {
     border-radius: 1vh;
 }
 
-table>div {
-    display: flex;
-    justify-content: space-between;
-}
 
 #borrowBTN {
     background-color: rgb(95, 9, 9);
@@ -133,8 +128,8 @@ table>div {
 
 /* USER BORROWED PAGE */
 
-.UserBorrowed {
-    margin: 1%;
+.borrowed_books{
+   text-align: left;
 }
 
 .borrowedBOOKS {
@@ -148,15 +143,25 @@ table>div {
 }
 
 .borrowedUser {
-    display: flex;
-    justify-content: space-around;
-
+    white-space: preline;
     background-color: rgb(241, 199, 199);
-    padding: 1%;
+    padding: 5%;
 
     border-radius: 0.5vh;
 }
 
+
+.returnBTN{
+    background-color: rgb(95, 9, 9);
+    padding: 5%;
+    border-radius: 0.5vh;
+    border-right: 0;
+    border-top: 0;
+}
+
+.returnBTN>a{
+    color: rgb(241, 199, 199);
+}
 
 /* LIBRARIAN HOMEPAGE  */
 
@@ -213,6 +218,9 @@ table>div {
 .bookN>a {
     color: rgb(95, 9, 9);
 }
+
+
+
 
 /* LIBRARIAN OVERVIEW (besitlling) */
 
