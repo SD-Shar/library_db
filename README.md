@@ -72,8 +72,11 @@ og de som har tilgang til nett og liker å bruke nettbaserte bestillinger.
 10. (Data lagres i MariaDB)
 
 (Utvidelse for prosjektoppgave vår):
-12. Mulighet å levere tilbake bøker
-13. Antall bøker lagt til
+
+11. Antall bøker lagt til
+12. Mulighet til å levere tilbake bøker
+
+
 
 ---
 
