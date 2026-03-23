@@ -201,9 +201,23 @@ def homepage_lib():
         return render_template("homepage_lib.html", epost=session['epost'], boker=boker)
         
 
+# FULL CUSTOMER OVERVIEW (for librarian)
+@app.route('/login/homepage_lib/customers')
+def customers():
+    if session.get("rolle") == "admin":
+        mydb = get_connection()
+        mycursor = mydb.cursor()
+        mycursor.execute("SELECT * FROM brukere")
+        brukere = mycursor.fetchall()
+        
+        mycursor.close()
+        mydb.close()
+        
+        return render_template("customers.html", brukere=brukere)
+        
 
 
-# OVERVIEW OF CUSTOMERS AND WHAT THEY'VE BORROWED (for librarian)
+# OVERVIEW OF BORROWED BOOKS (for librarian)
 @app.route('/login/homepage_lib/overview_lib')
 def overview_lib():
     if session.get("rolle") == "admin":
