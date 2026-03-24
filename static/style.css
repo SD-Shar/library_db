@@ -85,8 +85,13 @@ button {
     margin: 1%;
     padding: 1%;
     border-radius: 0.5vh;
-
 }
+
+.bookss>td {
+    text-align: center;
+    flex: 1;
+}
+
 
 table {
     display: flex;
@@ -99,8 +104,10 @@ table {
 
 #borrowBTN {
     background-color: rgb(95, 9, 9);
-    padding: 5%;
+    padding: 2%;
     border-radius: 0.5vh;
+    width: 50%;
+    margin-left: 6vw;
 }
 
 #borrowBTN>a {
@@ -128,9 +135,6 @@ table {
 
 /* USER BORROWED PAGE */
 
-.borrowed_books{
-   text-align: left;
-}
 
 .borrowedBOOKS {
     font-family: 'Garamond';
@@ -139,27 +143,35 @@ table {
 .bestillingTitles {
     display: flex;
     justify-content: space-around;
-    padding: 1%;
 }
 
 .borrowedUser {
-    white-space: preline;
-    background-color: rgb(241, 199, 199);
-    padding: 5%;
-
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(233, 167, 167);
+    margin: 1%;
+    padding: 1%;
     border-radius: 0.5vh;
 }
 
+.borrowedUser>td{
+    flex: 1;
+    text-align: center;
+}
 
-.returnBTN{
+
+.returnBTN {
     background-color: rgb(95, 9, 9);
     padding: 5%;
     border-radius: 0.5vh;
     border-right: 0;
     border-top: 0;
+    width: 50%;
+    margin-left: 6vw;
 }
 
-.returnBTN>a{
+.returnBTN>a {
     color: rgb(241, 199, 199);
 }
 
@@ -191,6 +203,11 @@ table {
     font-weight: bold;
 }
 
+.lib_books>td {
+    text-align: center;
+    flex: 1;
+}
+
 .LIB_links {
     display: flex;
     margin: 1%;
@@ -219,7 +236,16 @@ table {
     color: rgb(95, 9, 9);
 }
 
+.bookC {
+    background-color: rgb(122, 43, 43);
+    padding: 1%;
+    margin: 1%;
+    border-radius: 0.5vh;
+}
 
+.bookC>a {
+    color: rgb(241, 199, 199);
+}
 
 
 /* LIBRARIAN OVERVIEW (besitlling) */
@@ -235,6 +261,11 @@ table {
     border-radius: 0.5vh;
     padding: 1%;
     margin: 1%;
+}
+
+.orders>td {
+    text-align: center;
+    flex: 1;
 }
 
 /* ADD MORE BOOKS */
@@ -263,4 +294,26 @@ input {
     border-top: 0;
     border-right: 0;
     border-radius: 0.5vh;
+}
+
+
+/* CUSTOMER OVERVIEW */
+
+.customers {
+    display: flex;
+    background-color: rgb(241, 199, 199);
+    margin: 1%;
+    padding: 1%;
+}
+
+.customers>td {
+    text-align: center;
+    flex: 1;
+}
+
+
+a:hover{
+    scale: 1.1;
+    transition: 0.5s;
+    
 }

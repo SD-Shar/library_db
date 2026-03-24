@@ -28,7 +28,7 @@
                     <th>Books you've borrowed:</th>
                     <th>Author name:</th>
                     <th>Date of order:</th>
-
+                    <th> - Return book - </th>
                 </tr>
 
                 {% for c in borrowed_books %}
@@ -37,7 +37,6 @@
                     <td>{{ c[2] }}</td>
                     <td>{{ c[4] }}</td>
                     <td>
-
                         <div class="returnBTN" id="returnBTN">
                             <a href="{{ url_for('return_book', bok_id=c[0]) }}"
                                 onclick="return confirm('Return this book? {{ c[1] }} by {{ c[2] }} ');">Return

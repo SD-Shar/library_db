@@ -42,7 +42,6 @@ h3 {
 
 /* LOGIN OR SIGNUP */
 button {
-
     color: white;
 
     font-family: 'Garamond';
@@ -64,13 +63,35 @@ button {
     color: rgb(190, 128, 128);
 }
 
-.signUP_xtra > p > a{
+.signUP_xtra>p>a {
     color: rgb(255, 224, 224);
 }
 
 
 
 /* HOMEPAGE BRUKER */
+
+
+.browse_books {
+    display: flex;
+    flex-direction: column;
+}
+
+.bookss {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(233, 167, 167);
+    margin: 1%;
+    padding: 1%;
+    border-radius: 0.5vh;
+}
+
+.bookss>td {
+    text-align: center;
+    flex: 1;
+}
+
 
 table {
     display: flex;
@@ -80,15 +101,13 @@ table {
     border-radius: 1vh;
 }
 
-table>div {
-    display: flex;
-    justify-content: space-between;
-}
 
 #borrowBTN {
     background-color: rgb(95, 9, 9);
-    padding: 5%;
+    padding: 2%;
     border-radius: 0.5vh;
+    width: 50%;
+    margin-left: 6vw;
 }
 
 #borrowBTN>a {
@@ -116,8 +135,8 @@ table>div {
 
 /* USER BORROWED PAGE */
 
-.UserBorrowed {
-    margin: 1%;
+.borrowed_books {
+    text-align: left;
 }
 
 .borrowedBOOKS {
@@ -131,15 +150,28 @@ table>div {
 }
 
 .borrowedUser {
-    display: flex;
-    justify-content: space-around;
-
     background-color: rgb(241, 199, 199);
-    padding: 1%;
+    padding: 5%;
 
     border-radius: 0.5vh;
 }
 
+.borrowedUser>td{
+    flex: 1;
+    text-align: center;
+}
+
+.returnBTN {
+    background-color: rgb(95, 9, 9);
+    padding: 5%;
+    border-radius: 0.5vh;
+    border-right: 0;
+    border-top: 0;
+}
+
+.returnBTN>a {
+    color: rgb(241, 199, 199);
+}
 
 /* LIBRARIAN HOMEPAGE  */
 
@@ -164,6 +196,14 @@ table>div {
     padding: 1%;
     border-radius: 0.5vh;
     margin: 1%;
+
+    font-family: 'Garamond';
+    font-weight: bold;
+}
+
+.lib_books>td {
+    text-align: center;
+    flex: 1;
 }
 
 .LIB_links {
@@ -194,6 +234,18 @@ table>div {
     color: rgb(95, 9, 9);
 }
 
+.bookC {
+    background-color: rgb(122, 43, 43);
+    padding: 1%;
+    margin: 1%;
+    border-radius: 0.5vh;
+}
+
+.bookC>a {
+    color: rgb(241, 199, 199);
+}
+
+
 /* LIBRARIAN OVERVIEW (besitlling) */
 
 .LIBoverview {
@@ -207,6 +259,11 @@ table>div {
     border-radius: 0.5vh;
     padding: 1%;
     margin: 1%;
+}
+
+.orders>td {
+    text-align: center;
+    flex: 1;
 }
 
 /* ADD MORE BOOKS */
@@ -235,4 +292,19 @@ input {
     border-top: 0;
     border-right: 0;
     border-radius: 0.5vh;
+}
+
+
+/* CUSTOMER OVERVIEW */
+
+.customers {
+    display: flex;
+    background-color: rgb(241, 199, 199);
+    margin: 1%;
+    padding: 1%;
+}
+
+.customers>td {
+    text-align: center;
+    flex: 1;
 }
