@@ -11,7 +11,7 @@ h1 {
 
 h2 {
     font-family: 'Garamond';
-    color: rgb(190, 128, 128);
+    color: rgb(187, 98, 98);
 }
 
 h3 {
@@ -237,7 +237,7 @@ table {
 }
 
 .bookC {
-    background-color: rgb(122, 43, 43);
+    background-color: rgb(148, 53, 53);
     padding: 1%;
     margin: 1%;
     border-radius: 0.5vh;
