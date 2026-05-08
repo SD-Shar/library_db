@@ -74,3 +74,12 @@ UPDATE boker SET antall_boker = '13' WHERE id = 11,
 UPDATE boker SET antall_boker = '2' WHERE id = 12,
 UPDATE boker SET antall_boker = '8' WHERE id = 13,
 UPDATE boker SET antall_boker = '5' WHERE id = 14;
+
+
+
+
+-- [LEGG TIL LEVERINGSFRIST] (prøveeksamen)
+
+ALTER TABLE bestilling ADD leveringsfrist DATE;
+
+INSERT INTO bestilling (bruker_id, bok_id, leveringsfrist) VALUES (%s, %s, %s)", (bruker_id, bok_id, leveringsfrist)

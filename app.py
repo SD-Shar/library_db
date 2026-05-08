@@ -146,9 +146,10 @@ def borrow_book(bok_id):
     mydb = get_connection()
     mycursor = mydb.cursor()
     
+    
     from datetime import date, timedelta
-    dueDate  = date.today() + timedelta(days=30)
-    mycursor.execute("INSERT INTO bestilling (bruker_id, bok_id) VALUES (%s, %s)", (bruker_id, bok_id)
+    leveringsfrist  = date.today() + timedelta(days=30)
+    mycursor.execute("INSERT INTO bestilling (bruker_id, bok_id, leveringsfrist) VALUES (%s, %s, %s)", (bruker_id, bok_id)
     )
     
     # ![15/3/26]
@@ -160,6 +161,9 @@ def borrow_book(bok_id):
 
         
     return redirect(url_for("borrowed_kunde"))
+
+
+
 
 
 # TILBAKE LEVERING
@@ -311,6 +315,8 @@ def update_kunde():
     mydb.close()
     
     return redirect(url_for('customers'))
+
+
 
 @app.route("/customers/delete_kunde/<int:cid>")
 def delete_kunde(cid):
