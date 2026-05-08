@@ -312,11 +312,12 @@ def update_kunde():
     
     return redirect(url_for('customers'))
 
-@app.route("/customers/delete_kunde")
-def delete_kunde():
+@app.route("/customers/delete_kunde/<int:cid>")
+def delete_kunde(cid):
     mydb = get_connection()
     mycursor = mydb.cursor()
     
+    mycursor.execute("DELETE FROM bestilling WHERE bruker_id=%s", (cid,))
     mycursor.execute("DELETE FROM brukere WHERE id=%s", (cid,))
     
     mydb.commit()
