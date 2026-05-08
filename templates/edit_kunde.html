@@ -17,9 +17,9 @@
     </div>
 
     <h1>Edit User Information: </h1>
-    <form method="POST" action="{{ url_for('edit_kunde') }}">
+    <form method="POST" action="{{ url_for('update_kunde') }}">
 
-        <input type="hidden" name="id" value="{{ c[0] }}">
+        <input type="hidden" name="id" value="{{ cid }}">
 
         <label for="fornavn">First name:</label><br>
         <input type="name" name="fornavn" value="{{ c[1] }}"><br><br>

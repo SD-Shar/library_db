@@ -203,6 +203,7 @@ def homepage_lib():
         mydb.close()
     
         return render_template("homepage_lib.html", epost=session['epost'], boker=boker)
+    return redirect(url_for("login"))
         
 
 # FULL CUSTOMER OVERVIEW (for librarian)
@@ -218,7 +219,12 @@ def customers():
         mydb.close()
         
         return render_template("customers.html", brukere=brukere)
-        
+    return redirect(url_for("login"))
+
+# siden kræsjet når jeg ville se/sjekke customers,
+# så måtte finne ut av hvorfor og en AI sa at det kunne være pga disse
+# "if"-setningene om man er admin eller ikke, at man trengte en løsning
+
         
 # OVERVIEW OF BORROWED BOOKS (for librarian)
 @app.route('/login/homepage_lib/overview_lib')
@@ -232,12 +238,13 @@ def overview_lib():
         mycursor.close()
         mydb.close()
     
-    return render_template('overview_lib.html', bestilling=bestilling)
+        return render_template('overview_lib.html', bestilling=bestilling)
+    return redirect(url_for("login"))
 
 
 
 # ADD NEW BOOKS (for librarian)
-@app.route("/login/homepage_lib/add_books_lib", methods=["POST"])
+@app.route("/login/homepage_lib/add_books_lib", methods=["GET", "POST"])
 def add_books_lib():
     
     if session.get("rolle") == "admin":
@@ -257,8 +264,8 @@ def add_books_lib():
             mycursor.close()
             mydb.close()
             
-            return redirect("/login/homepage_lib")
-    return render_template('add_books_lib.html', )
+            return redirect(url_for('homepage_lib'))
+        return render_template('add_books_lib.html', )
 
 
 
@@ -268,20 +275,39 @@ def add_books_lib():
 
 # EDIT CUSTOMER - (for librarian - viser informasjon)
 
-@app.route("/edit_kunde/<int:cid>", methods=["GET", "POST"])
+@app.route("/login/homepage_lib/customers/edit_kunde/<int:cid>", methods=["GET", "POST"])
 def edit_kunde(cid):
     if session.get("rolle") == "admin":
         
         mydb = get_connection()
         mycursor = mydb.cursor()
+        
         mycursor.execute("SELECT fornavn, etternavn, epost, telefonnummer FROM brukere WHERE id=%s", (cid,))
+        
         bruker = mycursor.fetchone()
+        
         mycursor.close()
         mydb.close()
-        return render_template("edit_kunde.html", bruker = bruker)
+        
+        return render_template("edit_kunde.html", bruker=bruker, cid=cid)
+    return redirect(url_for('login'))
     
     
+@app.route("/customers/update_kunde", methods=["POST"])
+def update_kunde():
+    cid = request.form["id"]
+    fornavn = request.form["fornavn"]
+    etternavn = request.form["etternavn"]
+    epost = request.form["epost"]
+    telefonnummer = request.form["telefonnummer"]
     
+    mydb = get_connection()
+    mycursor = mydb.cursor()
+    
+    mycursor.execute("UPDATE brukere SET fornavn=%s, etternavn=%s, epost=%s, telefonnummer=%s WHERE id=%s", (fornavn, etternavn, epost, telefonnummer, cid))
+    mydb.commit()
+    mydb.close()
+    return redirect (url_for('customers'))
 
 
 
