@@ -10,27 +10,33 @@
 
 <body>
 
+    <div class="backLink" id="backLink">
+
+        <a href="/login">&larr;</a>
+
+    </div>
+
+    <h1>Edit User Information: </h1>
     <form method="POST" action="{{ url_for('edit_kunde') }}">
 
-        <input type="hidden" name="id">
+        <input type="hidden" name="id" value="{{ c[0] }}">
 
         <label for="fornavn">First name:</label><br>
-        <input type="name" id="fornavn" name="fornavn"><br><br>
+        <input type="name" name="fornavn" value="{{ c[1] }}"><br><br>
 
         <label for="etternavn">Last name:</label><br>
-        <input type="name" id="etternavn" name="etternavn" ><br><br>
+        <input type="name" name="etternavn" value="{{ c[2] }}"><br><br>
 
         <label for="epost">E-mail:</label><br>
-        <input type="email" id="epost" name="epost" ><br><br>
+        <input type="email" name="epost" value="{{ c[3] }}"><br><br>
 
         <label for="telefonnummer">Phone Number:</label><br>
-        <input type="telefonnummer" id="telefonnummer" name="telefonnummer"><br><br>
+        <input type="telefonnummer" name="telefonnummer" value="{{ c[4] }}"><br><br>
 
 
-        <button type="submit">Sign up</button>
+        <button type="submit">Update User</button>
     </form>
 
 
 </body>
-
 </html>

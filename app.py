@@ -237,7 +237,7 @@ def overview_lib():
 
 
 # ADD NEW BOOKS (for librarian)
-@app.route("/login/homepage_lib/add_books_lib", methods=["GET", "POST"])
+@app.route("/login/homepage_lib/add_books_lib", methods=["POST"])
 def add_books_lib():
     
     if session.get("rolle") == "admin":
@@ -259,6 +259,31 @@ def add_books_lib():
             
             return redirect("/login/homepage_lib")
     return render_template('add_books_lib.html', )
+
+
+
+
+
+# LIBRARIAN AUTHORITIES 
+
+# EDIT CUSTOMER - (for librarian - viser informasjon)
+
+@app.route("/edit_kunde/<int:cid>", methods=["GET", "POST"])
+def edit_kunde(cid):
+    if session.get("rolle") == "admin":
+        
+        mydb = get_connection()
+        mycursor = mydb.cursor()
+        mycursor.execute("SELECT fornavn, etternavn, epost, telefonnummer FROM brukere WHERE id=%s", (cid,))
+        bruker = mycursor.fetchone()
+        mycursor.close()
+        mydb.close()
+        return render_template("edit_kunde.html", bruker = bruker)
+    
+    
+    
+
+
 
 
 
