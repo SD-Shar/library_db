@@ -305,9 +305,10 @@ def update_kunde():
     mycursor = mydb.cursor()
     
     mycursor.execute("UPDATE brukere SET fornavn=%s, etternavn=%s, epost=%s, telefonnummer=%s WHERE id=%s", (fornavn, etternavn, epost, telefonnummer, cid))
+    mycursor.close()
     mydb.commit()
     mydb.close()
-    return redirect (url_for('customers'))
+    return redirect(url_for('customers'))
 
 
 
