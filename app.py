@@ -304,13 +304,25 @@ def update_kunde():
     mydb = get_connection()
     mycursor = mydb.cursor()
     
-    mycursor.execute("UPDATE brukere SET fornavn=%s, etternavn=%s, epost=%s, telefonnummer=%s WHERE id=%s", (fornavn, etternavn, epost, telefonnummer, cid))
+    mycursor.execute("UPDATE brukere SET fornavn=%s, etternavn=%s, epost=%s, telefonnummer=%s WHERE id=%s",(fornavn, etternavn, epost, telefonnummer, cid))
+    
     mycursor.close()
     mydb.commit()
     mydb.close()
+    
     return redirect(url_for('customers'))
 
-
+@app.route("/customers/delete_kunde")
+def delete_kunde():
+    mydb = get_connection()
+    mycursor = mydb.cursor()
+    
+    mycursor.execute("DELETE FROM brukere WHERE id=%s", (cid,))
+    
+    mydb.commit()
+    mydb.close()
+    return redirect(url_for('customers'))
+    
 
 
 
