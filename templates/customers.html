@@ -11,8 +11,6 @@
 <body>
 
 
-
-
     <div class="LIBoverview">
 
         <div class="backLink" id="backLink">
@@ -30,18 +28,25 @@
                 <th>First Name:</th>
                 <th>Last Name:</th>
                 <th>Phone Number:</th>
+                <th>Edit Users:</th>
             </tr>
 
             {% for c in brukere %}
+
             <tr class="customers">
                 <td>{{c[0]}}</td>
                 <td>{{c[1]}}</td>
                 <td>{{c[2]}}</td>
                 <td>{{c[3]}}</td>
                 <td>{{c[4]}}</td>
+
+                <td>
+                 
+                </td>
             </tr>
 
             {% endfor %}
+
         </table>
     </div>
 

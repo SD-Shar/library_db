@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit user</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <form method="POST" action="{{ url_for('edit_kunde') }}">
+
+        <input type="hidden" name="id">
+
+        <label for="fornavn">First name:</label><br>
+        <input type="name" id="fornavn" name="fornavn"><br><br>
+
+        <label for="etternavn">Last name:</label><br>
+        <input type="name" id="etternavn" name="etternavn" ><br><br>
+
+        <label for="epost">E-mail:</label><br>
+        <input type="email" id="epost" name="epost" ><br><br>
+
+        <label for="telefonnummer">Phone Number:</label><br>
+        <input type="telefonnummer" id="telefonnummer" name="telefonnummer"><br><br>
+
+
+        <button type="submit">Sign up</button>
+    </form>
+
+
+</body>
+
+</html>

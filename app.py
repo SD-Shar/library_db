@@ -10,12 +10,14 @@ app.secret_key = "secretkey"
 def get_connection():
     return mysql.connector.connect(
         host="10.200.14.11",
+        # host="127.0.0.1",
         user="absolute_solver",
         password="silly",
         database="library_db"
     )
     
     
+
     
 @app.route('/')
 def index():
@@ -144,6 +146,8 @@ def borrow_book(bok_id):
     mydb = get_connection()
     mycursor = mydb.cursor()
     
+    from datetime import date, timedelta
+    dueDate  = date.today() + timedelta(days=30)
     mycursor.execute("INSERT INTO bestilling (bruker_id, bok_id) VALUES (%s, %s)", (bruker_id, bok_id)
     )
     
@@ -215,8 +219,7 @@ def customers():
         
         return render_template("customers.html", brukere=brukere)
         
-
-
+        
 # OVERVIEW OF BORROWED BOOKS (for librarian)
 @app.route('/login/homepage_lib/overview_lib')
 def overview_lib():
@@ -265,3 +268,5 @@ def add_books_lib():
 if __name__ == '__main__':
     app.run(debug=True)
     
+# if __name__ == '__main__':
+#     serve(app, host='0.0.0.0', port=8080)
