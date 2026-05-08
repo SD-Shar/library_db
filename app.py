@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, session, url_for, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 import mysql.connector
+from datetime import date, timedelta
 
 app = Flask(__name__)
 app.secret_key = "secretkey"
@@ -122,7 +123,7 @@ def borrowed_kunde():
     mycursor = mydb.cursor()
     
     # (had to ask chatgpt for this part)
-    mycursor.execute("""SELECT b.id, b.bok_navn, b.bok_forfatter, be.bok_id, be.tid_av_bestilling
+    mycursor.execute("""SELECT b.id, b.bok_navn, b.bok_forfatter, be.bok_id, be.tid_av_bestilling, be.leveringsfrist
                      FROM bestilling be
                      JOIN boker b ON be.bok_id = b.id WHERE be.bruker_id = %s ORDER BY be.tid_av_bestilling DESC""", (bruker_id,))
     borrowed_books = mycursor.fetchall()
@@ -146,10 +147,9 @@ def borrow_book(bok_id):
     mydb = get_connection()
     mycursor = mydb.cursor()
     
-    
-    from datetime import date, timedelta
+    # AI overview - original info fra "levelup.gitconnected.com"/"Medium"
     leveringsfrist  = date.today() + timedelta(days=30)
-    mycursor.execute("INSERT INTO bestilling (bruker_id, bok_id, leveringsfrist) VALUES (%s, %s, %s)", (bruker_id, bok_id)
+    mycursor.execute("INSERT INTO bestilling (bruker_id, bok_id, leveringsfrist) VALUES (%s, %s, %s)", (bruker_id, bok_id, leveringsfrist)
     )
     
     # ![15/3/26]
@@ -244,7 +244,6 @@ def overview_lib():
     
         return render_template('overview_lib.html', bestilling=bestilling)
     return redirect(url_for("login"))
-
 
 
 # ADD NEW BOOKS (for librarian)
