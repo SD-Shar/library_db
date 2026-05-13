@@ -82,4 +82,30 @@ UPDATE boker SET antall_boker = '5' WHERE id = 14;
 
 ALTER TABLE bestilling ADD leveringsfrist DATE;
 
-INSERT INTO bestilling (bruker_id, bok_id, leveringsfrist) VALUES (%s, %s, %s)", (bruker_id, bok_id, leveringsfrist)
+-- INSERT INTO bestilling (bruker_id, bok_id, leveringsfrist) VALUES (%s, %s, %s)", (bruker_id, bok_id, leveringsfrist);
+
+CREATE TABLE ny_faq (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    bruker_id INT NOT  NULL,
+    sporsmal TEXT NOT NULL,
+    opprettet DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (bruker_id) REFERENCES brukere(id) ON DELETE CASCADE
+);
+
+
+INSERT INTO ny_faq (bruker_id, sporsmal, opprettet) VALUES (%s, %s, %s), (bruker_id, sporsmal, opprettet);
+
+INSERT INTO ny_faq (bruker_id, sporsmal, opprettet) VALUES
+( 1, 'Hvordan logger jeg inn?', '2026-01-01'),
+( 1, 'Hvordan endrer jeg passord?', '2026-01-01'),
+( 1, 'Hvordan sletter jeg kontoen min?', '2026-01-01'),
+( 1, 'Hvordan kontakter jeg support?', '2026-01-01'),
+( 1, 'Hvordan behandles persondata?', '2026-01-01');
+
+
+
+
+
+
+

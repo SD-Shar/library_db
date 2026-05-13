@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="prosjektbeskrivelse-av-library_db--it-utviklingsprosjekt-2imi">Prosjektbeskrivelse av library_db – IT-utviklingsprosjekt (2IMI)</h1>
+<h2 id="bibliotek-prosjekt">Bibliotek prosjekt</h2>
+<p><strong>Bibliotek database:</strong><br>
+<strong>Rebecca:</strong><br>
+<strong>2IMI:</strong><br>
+<strong>lagd uke 5-7 2026:</strong></p>
+<p><strong>Utvidelse: prosjektoppgave til vår 2026</strong></p>
+<hr>
+<h3 id="individuelt-prosjekt">Individuelt prosjekt</h3>
+<hr>
+<h2 id="1-prosjektidé-og-problemstilling">1. Prosjektidé og problemstilling</h2>
+<h3 id="beskrivelse">Beskrivelse</h3>
+<pre class="hljs"><code><div><span class="hljs-bullet">-</span> Dette prosjektet er en simulert database av et bibliotek.
+<span class="hljs-bullet">-</span> Det er mulig å bestille og låne bøker for kunder, og å se bestillinger,
+både personlige bestillinger fra kunder og alle bestillinger for bibliotekaren.
+
+Spørsmål og problem:
+&quot;Hvilket problem løser løsningen?&quot;
+<span class="hljs-bullet">-</span> Her er spørsmålet hvordan kan jeg bestille bøker på det bibliotek?
+Og løsningen har jeg laget med alle sidene og deler av kode som lar en
+bruker se og låne bøker.
+&quot;Hvem er målgruppen?&quot;
+<span class="hljs-bullet">-</span> På denne nettsiden er målgruppen yngre folk som liker å lese,
+og de som har tilgang til nett og liker å bruke nettbaserte bestillinger.
+</div></code></pre>
+<p><strong>Utvidelse:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-bullet">-</span> Det er mulig å låne og levere tilbake bøker som kunde.
+<span class="hljs-bullet">-</span> Det er lagt til &quot;antall bøker&quot; i boklisten. (også oppdatert for å legge til bøker)
+</div></code></pre>
+<p><strong>Installasjon og kjøring av prosjektet:</strong></p>
+<ol>
+<li><strong>Klon prosjektet:</strong></li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-code">    git clone https://github.com/SD-Shar/library_db.git
+</span></div></code></pre>
+<ol start="2">
+<li>
+<p><strong>Installasjons krav:</strong></p>
+<pre class="hljs"><code><div>```bash
+pip install flask
+pip install mysql.connector
+.env - (med eget passord)
+
+
+</div></code></pre>
+</li>
+<li>
+<p><strong>Kjøring av prosjekt:</strong></p>
+</li>
+</ol>
+<pre class="hljs"><code><div>   aktiver terminal med &#x27;source venv/Scripts/activate&#x27;
+   kjør med &#x27;python -m flask run&#x27; eller &#x27;flask run&#x27;
+</div></code></pre>
+<hr>
+<h2 id="2-funksjonalitet-i-biblioteket">2. Funksjonalitet i biblioteket</h2>
+<ol>
+<li>Sign up (lage ny bruker, med default rolle 'bruker')</li>
+<li>Logg in til biblioteket</li>
+<li>Hjemme side for kunde</li>
+<li>Hjemme side for bibliotekar</li>
+<li>Se bøker både for kunder og for bibliotekar</li>
+<li>Låne/bestille bøker (kunde)</li>
+<li>Se logg av tidligere lånte bøker (kunde)</li>
+<li>Se logg av alle bestillinger og lånte bøker (bibliotekar)</li>
+<li>Legge til flere bøker (bibliotekar)</li>
+<li>(Data lagres i MariaDB)</li>
+</ol>
+<p>(Utvidelse for prosjektoppgave vår):</p>
+<ol start="11">
+<li>Antall bøker lagt til</li>
+<li>Mulighet til å levere tilbake bøker</li>
+</ol>
+<p>(Utvidelse for prøveeksamen):</p>
+<ol start="13">
+<li>Mulighet å redigere brukere sin informasjon</li>
+<li>Mulighet til å slette kunder (og bestillingene)</li>
+<li>Leveringsfrist for bøkene</li>
+</ol>
+<hr>
+<h2 id="3-teknologivalg">3. Teknologivalg</h2>
+<h3 id="programmeringsspråk">Programmeringsspråk</h3>
+<pre class="hljs"><code><div><span class="hljs-bullet">-</span> Python / HTML / CSS\
+</div></code></pre>
+<h3 id="rammeverk">Rammeverk</h3>
+<pre class="hljs"><code><div>Flask / Python\
+</div></code></pre>
+<h3 id="database">Database</h3>
+<pre class="hljs"><code><div><span class="hljs-bullet">-</span> MariaDB / Raspberry PI\
+</div></code></pre>
+<h3 id="servermiljø">Servermiljø</h3>
+<pre class="hljs"><code><div><span class="hljs-emphasis">*Ubuntu v.25, Mariadb, Raspberry pi*</span>
+</div></code></pre>
+<h3 id="verktøy">Verktøy</h3>
+<pre class="hljs"><code><div><span class="hljs-bullet">-</span> GitHub
+<span class="hljs-bullet">-</span> GitHub Projects (Kanban)
+</div></code></pre>
+<hr>
+<h2 id="4-datamodell">4. Datamodell</h2>
+<h3 id="oversikt-over-tabeller">Oversikt over tabeller</h3>
+<p><strong>Bruker tabell</strong></p>
+<ul>
+<li>Navn i databasen: brukere</li>
+<li>Beskrivelse: Denne tabellen er for brukerene (kundene) i biblioteket.
+Denne dataen blir lagret etter at en kunde lager en ny bruker i 'Sign up'.
+Default rollen til en som registrerer en ny bruker er alltid 'bruker'
+med mindre det blir endringer i databasen.
+(Bibliotekarer må få rollen sin via en manuelle endringer,
+det går ikke an å velge det ved registrering.)</li>
+</ul>
+<pre class="hljs"><code><div>+---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| id            | int(11)      | NO   | PRI | NULL    | auto<span class="hljs-emphasis">_increment |
+| fornavn       | varchar(50)  | NO   |     | NULL    |                |
+| etternavn     | varchar(50)  | NO   |     | NULL    |                |
+| epost         | varchar(100) | NO   |     | NULL    |                |
+| telefonnummer | varchar(15)  | YES  |     | NULL    |                |
+| passord_</span>hash  | varchar(255) | NO   |     | NULL    |                |
+| rolle         | varchar(10)  | NO   |     | bruker  |                |
++---------------+--------------+------+-----+---------+----------------+
+</div></code></pre>
+<p><strong>Bok tabell</strong></p>
+<ul>
+<li>Navn i databasen: boker</li>
+<li>Tabellen for bøker inneholder en ID til hver bok,
+bokens tittel (navn) og bokens forfatter.
+Navnet til boken og forfatteren blir lagret i &quot;Add books&quot;
+siden til bibliotekaren og blir automatisk oppdatert.
+Det går ikke an å endre informasjonen til bøker gjennom nettsiden.</li>
+</ul>
+<pre class="hljs"><code><div>+---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| id            | int(11)     | NO   | PRI | NULL    | auto<span class="hljs-emphasis">_increment |
+| bok_</span>navn      | varchar(50) | NO   |     | NULL    |                |
+| bok<span class="hljs-emphasis">_forfatter | varchar(50) | NO   |     | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
+</span></div></code></pre>
+<p><strong>Bestillings tabell</strong></p>
+<ul>
+<li>Navn i databasen: bestilling</li>
+<li>Bestillingstabellen er det som binder sammen kundene og bøkene de bestiller.
+Den har 'bruker_id' og 'bok_id' som python koden lenker til brukerene sin id og bok id.
+'tid_av_bestilling' oppdateres på live tid når en kunde låner en bok,
+dette er mulig med default kommandoen 'current_timestamp().</li>
+</ul>
+<pre class="hljs"><code><div>+-------------------+-----------+------+-----+---------------------+-------+
+| Field             | Type      | Null | Key | Default             | Extra |
++-------------------+-----------+------+-----+---------------------+-------+
+| bruker<span class="hljs-emphasis">_id         | int(11)   | NO   | MUL | NULL                |       |
+| bok_</span>id            | int(11)   | NO   | MUL | NULL                |       |
+| tid<span class="hljs-emphasis">_av_</span>bestilling | timestamp | YES  |     | current<span class="hljs-emphasis">_timestamp() |       |
++-------------------+-----------+------+-----+---------------------+-------+
+</span></div></code></pre>
+<p><strong>NY bestillingstabell (oppdatert for prøveeksamen, lagt til leveringsfrist)</strong></p>
+<ul>
+<li>Siden jeg allerede har bestillinger som ikke ha leveringsfrist,
+så satte jeg ikke en &quot;not null&quot; parameter for leveringsfristen i tilfelle det ville gjøre ting komplisert eller at noe kræsjer.
+Hvis jeg hadde skrevet &quot;not null&quot; vill jeg helst gjernet alle bestillinger og gjort alt på nytt,
+men med tiden på eksamen ville jeg heller prioritere å ha et nærmere &quot;fullstendig&quot; produkt.</li>
+</ul>
+<pre class="hljs"><code><div>+-------------------+-----------+------+-----+---------------------+-------+
+| Field             | Type      | Null | Key | Default             | Extra |
++-------------------+-----------+------+-----+---------------------+-------+
+| bruker<span class="hljs-emphasis">_id         | int(11)   | NO   | MUL | NULL                |       |
+| bok_</span>id            | int(11)   | NO   | MUL | NULL                |       |
+| tid<span class="hljs-emphasis">_av_</span>bestilling | timestamp | YES  |     | current<span class="hljs-emphasis">_timestamp() |       |
+| leveringsfrist    | date      | YES  |     | NULL                |       |
++-------------------+-----------+------+-----+---------------------+-------+
+
+</span></div></code></pre>
+<h3 id="eksempel-på-tabellstruktur">Eksempel på tabellstruktur</h3>
+<pre class="hljs"><code><div><span class="hljs-code">```sql
+CREATE TABLE bestilling (
+   bruker_id INT NOT NULL,
+   bok_id INT NOT NULL,
+   FOREIGN KEY (bruker_id) REFERENCES brukere(id),
+   FOREIGN KEY (bok_id) REFERENCES boker(id),
+   tid_av_bestilling TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+</span></div></code></pre>
+<pre class="hljs"><code><div>---
+
+## 5. Refleksjon
+
+**Feil eller mangler i biblioteket**
+ ```markdown
+Med tidsrammen var det ikke alt jeg fikk tid til å gjøre,
+så måten biblioteket funker nå er veldig enkelt.
+Det første store problemet er at det ikke er en grense på hvor mange
+kan låne en bok, og flere brukere kan låne den samme boken uten en ventetid.
+Det er også ingen leveringsfunksjon for å levere tilbake lånte bøker på nettsiden.
+Dette hadde jeg tenkt på når jeg startet biblioteks prosjektet
+men visste at det ville blitt et uferdig prosjekt om jeg hadde lagt til
+mer arbeid enn jeg visste jeg kunne få til.
+
+Visuelt så er det et sentreringsproblem jeg ikke har funnet ut av
+i oversikten av bøker og bestillinger.
+Dette er et css problem og kan fikses kjapt,
+men siden finpussing av hvordan nettsiden ser ut ikke
+er det viktigste prioriterte jeg å bli ferdig med dokumentasjonen i tide.
+</div></code></pre>
+<p><strong>Problemer jeg møtte</strong></p>
+<pre class="hljs"><code><div>Å lage selve databasen gikk helt greit og jeg skrev av
+tidligere koder som lignet for å lage biblioteket.
+Å legge til farger og rammer på slutten synes jeg også var
+gøy og uten problemer (med unntak av et sentreringsproblem for tabeller.)
+Det som gav meg litt problemer var små skrivefeil, linking med sider,
+og informasjonen som skulle vises på nettsiden. 
+Det meste av hvor jeg har fått koden og informasjonen min
+er basert på tidligere prosjekter og egen kunnskap fra før,
+men til en del av kode der bestillingene skulle vises og ha med id-er
+fra 2 forskjellige tabeller, måtte jeg spørre chatGPT med innslag fra lærer. 
+Jeg foretrekker å ikke bruke KI, men informasjonen jeg fikk var en sql
+kommando som jeg ikke visste om fra før og jeg kan bruke denne informasjonen
+senere i livet eller til ting jeg jobber med i fremtidige prosjekter.
+</div></code></pre>
+<p><strong>Til fremtidige prosjekter</strong></p>
+<pre class="hljs"><code><div>Til fremtiden, om jeg skal jobbe videre med dette prosjektet,
+ville jeg lagt til en leverings funksjon til bibilioteket.
+Da ville jeg trengt en tabell til, som skal kunne lenke til bestillingene,
+bruker id, bok id, bestillings tid og oppdatere når en bok ble gitt tilbake.
+Med en lånefrist må jeg også legge til en variabel for når boken skal
+bli levert basert på når den var lånt. 
+
+Med tanke på fremtidige prosjekter kan jeg lære av slurvefeil
+eller lignende ting jeg hadde problemer med
+</div></code></pre>
+<hr>
+<h2 id="6-kildeliste">6. Kildeliste</h2>
+<pre class="hljs"><code><div><span class="hljs-bullet">-</span> Tidligere oppgaver og utviklingsprosjekter
+<span class="hljs-bullet">-</span> w3schools
+<span class="hljs-bullet">-</span> ChatGPT (for rydding opp i kode, skrivefeil og en del av kode for bestilling)
+</div></code></pre>
+<h3 id="laget-av">Laget av</h3>
+<p>Rebecca 2IMI</p>
+
+</body>
+</html>

@@ -76,6 +76,12 @@ og de som har tilgang til nett og liker å bruke nettbaserte bestillinger.
 11. Antall bøker lagt til
 12. Mulighet til å levere tilbake bøker
 
+(Utvidelse for prøveeksamen):
+
+13. Mulighet å redigere brukere sin informasjon
+14. Mulighet til å slette kunder (og bestillingene)
+15. Leveringsfrist for bøkene
+
 
 
 ---
@@ -170,6 +176,26 @@ dette er mulig med default kommandoen 'current_timestamp().
  ```
 
 
+ **NY bestillingstabell (oppdatert for prøveeksamen, lagt til leveringsfrist)**
+ - Siden jeg allerede har bestillinger som ikke ha leveringsfrist,
+ så satte jeg ikke en "not null" parameter for leveringsfristen i tilfelle det ville gjøre ting komplisert eller at noe kræsjer.
+ Hvis jeg hadde skrevet "not null" vill jeg helst gjernet alle bestillinger og gjort alt på nytt,
+ men med tiden på eksamen ville jeg heller prioritere å ha et nærmere "fullstendig" produkt.
+ Jeg trenger heller ikke være redd for at det skal være null i fremtiden,
+ siden type data er "date" og blir lagt på automatisk når noen låner.
+```markdown
++-------------------+-----------+------+-----+---------------------+-------+
+| Field             | Type      | Null | Key | Default             | Extra |
++-------------------+-----------+------+-----+---------------------+-------+
+| bruker_id         | int(11)   | NO   | MUL | NULL                |       |
+| bok_id            | int(11)   | NO   | MUL | NULL                |       |
+| tid_av_bestilling | timestamp | YES  |     | current_timestamp() |       |
+| leveringsfrist    | date      | YES  |     | NULL                |       |
++-------------------+-----------+------+-----+---------------------+-------+
+
+ ```
+
+
 ### Eksempel på tabellstruktur
  ```markdown
 ```sql
@@ -234,7 +260,6 @@ bli levert basert på når den var lånt.
 Med tanke på fremtidige prosjekter kan jeg lære av slurvefeil
 eller lignende ting jeg hadde problemer med
 ```
-
 
 ---
 

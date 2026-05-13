@@ -155,7 +155,7 @@ table {
     border-radius: 0.5vh;
 }
 
-.borrowedUser>td{
+.borrowedUser>td {
     flex: 1;
     text-align: center;
 }
@@ -312,8 +312,27 @@ input {
 }
 
 
-a:hover{
+a:hover {
     scale: 1.1;
     transition: 0.5s;
-    
+
+}
+
+
+.EditBTN {
+    color: rgb(237, 186, 186);
+    background-color: rgb(98, 50, 33);
+    padding: 4%;
+
+    border: 1vh solid none;
+    border-radius: 1vh;
+}
+
+.DeleteBTN {
+    color: rgb(237, 186, 186);
+    background-color: rgb(88, 38, 24);
+    padding: 4%;
+
+    border: 1vh solid none;
+    border-radius: 1vh;
 }
