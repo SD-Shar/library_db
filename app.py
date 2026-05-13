@@ -109,9 +109,37 @@ def browse_kunde():
     return render_template("browse_kunde.html", boker=boker, epost=session['epost'])
 
 # ![13/5/26] FAQ SITE
-@app.route('/login/browse_kunde/faq_kunde')
-def faq_site():
-    return render_template("faq_kunde.html")
+@app.route('/faq_kunde', methods=["GET", "POST"])
+def faq_kunde():
+    
+    if "epost" not in session:
+        return redirect(url_for("login"))
+    
+    mydb = get_connection()
+    mycursor = mydb.cursor()
+    
+    mycursor.execute("SELECT * FROM ny_faq")
+    ny_faq = mycursor.fetchall() #liste??
+    
+    mycursor.close()
+    mydb.close()
+    
+# NEW QUESTION
+    if request.method == "POST":
+    
+        new_q = request.form["new_q"]
+        
+        bruker_id = session['bruker_id']
+ 
+        mycursor.execute("INSERT INTO ny_faq (bruker_id, sporsmal) VALUES (%s, %s)", (bruker_id, new_q))
+        mydb.commit()
+        
+        mycursor.close()
+        mydb.close()
+            
+    return render_template("faq_kunde.html", sporsmal=ny_faq )
+    
+    
 
 # BORROW BOOKS
 @app.route('/login/browse_kunde/borrowed_kunde', methods=["GET", "POST"])

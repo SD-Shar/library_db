@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
     <h1>Frequently asked Questions:</h1>
+    <br>
+    <div class="questions">
+        {% for q in sporsmal %}
 
-         
-            {% for q in sporsmal %}
+        <h3>{{ q[2] }}</h3>
 
-            <h3>{{ sporsmal [0] }}</h3>
-            <p>svar</p>
-            <br>
-            <h3>{{ sporsmal [1] }}</h3>
-            <p>svar</p>
-            <br>
-            <h3>{{ sporsmal [2] }}</h3>
-            <p>svar</p>
-            <br>
-            <h3>{{ sporsmal [3] }}</h3>
-            <p>svar</p>
-            <br>
-            <h3>{{ sporsmal [4] }}</h3>
-            <p>svar</p>
-         
-            {% endfor %}
+        {% endfor %}
 
+    </div>
+    <br>
 
-       
-    
+    <div class="awnsers">
+        <p>1) Du logger inn via "Login" siden.</p>
+        <p>2) Du kan endre passord ved å sende mail til bibliotekaren.</p>
+        <p>3) Du kan slette kontoen din ved å finne "Slett konto" knappen.</p>
+        <p>4) Du kan kontakte oss med mailen "librarian@access.no".</p>
+        <p>5) Persondata blir lagret i en trygg database, og når en bruker blir slettet beholdes ikke din data.</p>
+    </div>
+
+    <h3>Har du noen andre spørsmål? Send de inn her:</h3>
+    <form action="POST" action="{{ url_for('faq_kunde') }}">
+        <label for="new_q">Ditt spørsmål:</label>
+        <input type="text" id="new_q" name="new_q" placeholder="Hvordan finner jeg...">
+
+        <button type="submit">Send inn</button>
+    </form>
+
 </body>
+
 </html>
