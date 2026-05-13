@@ -11,13 +11,13 @@ app.secret_key = "secretkey"
 def get_connection():
     return mysql.connector.connect(
         # host="10.200.14.11",
-        host="172.19.15.46",
+        host="localhost",
         user="absolute_solver",
         password="silly",
         database="library_db"
     )
     
-    
+
 
     
 @app.route('/')
@@ -108,7 +108,10 @@ def browse_kunde():
 
     return render_template("browse_kunde.html", boker=boker, epost=session['epost'])
 
-
+# ![13/5/26] FAQ SITE
+@app.route('/login/browse_kunde/faq_kunde')
+def faq_site():
+    return render_template("faq_kunde.html")
 
 # BORROW BOOKS
 @app.route('/login/browse_kunde/borrowed_kunde', methods=["GET", "POST"])
