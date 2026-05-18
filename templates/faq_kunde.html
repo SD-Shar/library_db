@@ -12,7 +12,7 @@
     <h1>Frequently asked Questions:</h1>
     <br>
     <div class="questions">
-        {% for q in sporsmal %}
+        {% for q in init_q %}
 
         <h3>{{ q[2] }}</h3>
 
@@ -28,16 +28,26 @@
         <p>4) You can contact us on 'library@notascam.com'.</p>
         <p>5) Your personal data is stored safely in a database with limited access,
             passwords are securely hashed and private,
+            <br>
             and all your personal records and data will be removed upon delete of an account</p>
+        <p>6) If your question is not here, please feel free to ask us here below,
+            <br>an administrator will contact you on mail as soon as possible.</p>
     </div>
 
-    <h3>Har du noen andre spørsmål? Send de inn her:</h3>
-    <form action="POST" action="{{ url_for('faq_kunde') }}">
-        <label for="new_q">Ditt spørsmål:</label>
-        <input type="text" id="new_q" name="new_q" placeholder="Hvordan finner jeg...">
+    <h3>Do you have other questions? Ask here:</h3>
+    <form method="POST" action="{{ url_for('faq_kunde') }}">
+        <label for="new_q">Your question:</label>
+        <input type="text" id="new_q" name="new_q" placeholder="How do I find...">
 
-        <button type="submit">Send inn</button>
+        <button type="submit">Ask question</button>
     </form>
+
+
+    <div class="userQ">
+        {% for q in ny_q %}
+
+        <h2>{{ q[2] }}</h2>
+    </div>
 
 </body>
 

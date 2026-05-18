@@ -126,15 +126,26 @@ def faq_kunde():
 
         mycursor.execute("INSERT INTO ny_faq (bruker_id, sporsmal) VALUES (%s, %s)",(bruker_id, new_q))
         mydb.commit()
+        
 
-    # SPØRSMÅL
-    mycursor.execute("SELECT * FROM ny_faq")
-    ny_faq = mycursor.fetchall()
+    # SPØRSMÅL - pre-done og nye:
+    
+    # INITIAL QUESTIONS
+    mycursor.execute("SELECT * FROM ny_faq WHERE bruker_id = 1")
+    init_q = mycursor.fetchall()
+    
+    # NYE SPØRSMÅL
+    mycursor.execute("SELECT * FROM ny_faq WHERE bruker_id != 1")
+    ny_q = mycursor.fetchall()
+    
+    
+    # mycursor.execute("SELECT * FROM ny_faq")
+    # ny_faq = mycursor.fetchall()
 
     mycursor.close()
     mydb.close()
 
-    return render_template("faq_kunde.html", sporsmal=ny_faq)
+    return render_template("faq_kunde.html", init_q=init_q, ny_q=ny_q)
     
     
 
