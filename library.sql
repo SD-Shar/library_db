@@ -103,6 +103,13 @@ INSERT INTO ny_faq (bruker_id, sporsmal, opprettet) VALUES
 ( 1, 'Hvordan kontakter jeg support?', '2026-01-01'),
 ( 1, 'Hvordan behandles persondata?', '2026-01-01');
 
+-- for raspberry pi
+INSERT INTO ny_faq (bruker_id, sporsmal, opprettet) VALUES
+( 1, 'How do I borrow a book?', '2026-01-01'),
+( 1, 'How do I return a book?', '2026-01-01'),
+( 1, 'How do I delete my account?', '2026-01-01'),
+( 1, 'Where can I contact customer service?', '2026-01-01'),
+( 1, 'How is my data stored?', '2026-01-01');
 
 
 

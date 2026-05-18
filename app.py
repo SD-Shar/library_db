@@ -10,8 +10,8 @@ app.secret_key = "secretkey"
 # GET CONNECTION FROM FLASK
 def get_connection():
     return mysql.connector.connect(
-        # host="10.200.14.11",
-        host="localhost",
+        host="10.200.14.11",
+        # host="localhost",
         user="absolute_solver",
         password="silly",
         database="library_db"
