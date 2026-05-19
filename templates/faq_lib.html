@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer questions</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="faq_lib">
+
+        
+    <div class="backLink" id="backLink">
+        <a href="/login/homepage_lib">&larr; Back to homepage</a>
+
+    </div>
+
+
+    <h3>Customer questions</h3>
+
+    <div class="userQ">
+        {% for q in ny_q %}
+
+        <h2 class="customer_q">{{ q[1] }}. {{ q[2]}} --- Asked: ({{ q[3] }})</h2>
+
+        {% endfor %}
+    </div>
+    </div>
+
+
+
+</body>
+
+</html>

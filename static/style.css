@@ -29,11 +29,16 @@ h3 {
     color: black;
 
     font-weight: bold;
-    font-size: x-large;
 
     padding: 0.5%;
 
     border-radius: 0.5vh;
+}
+
+div>a:hover {
+    scale: 1.1;
+    transition: 0.5s;
+    opacity: 90%;
 }
 
 .mainPage {
@@ -346,7 +351,7 @@ a:hover {
     width: 20vw;
     margin: 1%;
     padding: 1%;
-    border-radius: 1vh;
+    border-radius: 0.5vh;
     font-size: medium;
     color:rgb(237, 186, 186);
 }
@@ -355,12 +360,13 @@ a:hover {
 .userQ{
     background-color: rgb(237, 186, 186);
     padding: 0.1%;
-    width: 50vh;
+    width: 50%;
     border-radius: 1vh;
     margin: 1%;
 }
 
 .customer_q{
+    padding: 1%;
     font-size: medium;
     color: rgb(95, 9, 9);;
 }

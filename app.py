@@ -311,6 +311,24 @@ def add_books_lib():
 
 
 
+# ![19/5/26] tirsdag - customer service???
+# CUSTOMER SERVICE (for librarian)
+@app.route("/login/homepage_lib/faq_lib", methods=["GET","POST"])
+def faq_lib():
+    
+    if session.get("rolle") == "admin":
+        mydb = get_connection()
+        mycursor = mydb.cursor()
+        mycursor.execute("SELECT * FROM ny_faq WHERE bruker_id != 1")
+        ny_q = mycursor.fetchall()
+        
+        mycursor.close()
+        mydb.close()
+        
+        return render_template("faq_lib.html", ny_q=ny_q)
+    return redirect(url_for("login"))
+
+
 
 
 # LIBRARIAN AUTHORITIES 
