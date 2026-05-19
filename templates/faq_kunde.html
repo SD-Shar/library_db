@@ -9,12 +9,19 @@
 </head>
 
 <body>
+
+    <div class="backLink" id="backLink">
+
+        <a href="/login/browse_kunde">&larr;</a>
+
+    </div>
+
     <h1>Frequently asked Questions:</h1>
     <br>
     <div class="questions">
         {% for q in init_q %}
 
-        <h3>{{ q[2] }}</h3>
+        <h3>{{ q[0] }}. {{ q[2] }}</h3>
 
         {% endfor %}
 
@@ -29,14 +36,17 @@
         <p>5) Your personal data is stored safely in a database with limited access,
             passwords are securely hashed and private,
             <br>
-            and all your personal records and data will be removed upon delete of an account</p>
+            and all your personal records and data will be removed upon delete of an account
+        </p>
         <p>6) If your question is not here, please feel free to ask us here below,
-            <br>an administrator will contact you on mail as soon as possible.</p>
+            <br>an administrator will contact you on mail as soon as possible.
+        </p>
     </div>
 
-    <h3>Do you have other questions? Ask here:</h3>
+    <h3>Do you have other questions? Ask here!</h3>
     <form method="POST" action="{{ url_for('faq_kunde') }}">
         <label for="new_q">Your question:</label>
+        <br>
         <input type="text" id="new_q" name="new_q" placeholder="How do I find...">
 
         <button type="submit">Ask question</button>
@@ -46,7 +56,9 @@
     <div class="userQ">
         {% for q in ny_q %}
 
-        <h2>{{ q[2]}}</h2>
+        <h2 class="customer_q">{{ q[2]}}</h2>
+
+        {% endfor %}
     </div>
 
 </body>

@@ -344,3 +344,17 @@ a:hover {
 .faq_button{
     color:rgb(237, 186, 186);
 }
+
+
+.userQ{
+    background-color: rgb(237, 186, 186);
+    padding: 0.1%;
+    width: 50vh;
+    border-radius: 1vh;
+    margin: 1%;
+}
+
+.customer_q{
+    font-size: medium;
+    color: rgb(95, 9, 9);;
+}
