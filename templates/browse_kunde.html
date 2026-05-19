@@ -12,10 +12,14 @@
 
     <div class="mainPage">
 
-         <div class="backLink" id="backLink">
+        <div class="backLink" id="backLink">
 
             <a href="/login">&larr; Log out</a>
 
+        </div>
+
+        <div class="faq_button">
+            Got questions? Visit our FAQ page <a href="{{ url_for('faq_kunde') }}"> here</a>
         </div>
 
 
@@ -54,10 +58,6 @@
                 {% endfor %}
 
             </table>
-
-            <div class="faq_button">
-                Got questions? Visit our FAQ page <a href="{{ url_for('faq_kunde') }}">here</a>
-            </div>
 
 
         </div>
