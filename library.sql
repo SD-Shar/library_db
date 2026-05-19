@@ -112,7 +112,7 @@ INSERT INTO ny_faq (bruker_id, sporsmal, opprettet) VALUES
 ( 1, 'How is my data stored?', '2026-01-01');
 ( 1, 'What if my question is not here?', '2026-01-01');
 
-
+ALTER TABLE ny_faq ADD COLUMN svar TEXT;
 
 
 
