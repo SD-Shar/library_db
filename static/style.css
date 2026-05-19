@@ -342,6 +342,12 @@ a:hover {
 }
 
 .faq_button{
+    background-color: rgb(128, 27, 27);
+    width: 20vw;
+    margin: 1%;
+    padding: 1%;
+    border-radius: 1vh;
+    font-size: medium;
     color:rgb(237, 186, 186);
 }
 
