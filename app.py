@@ -1,21 +1,26 @@
+import os
 from flask import Flask, render_template, request, redirect, session, url_for, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 import mysql.connector
 from datetime import date, timedelta
+from dotenv import load_dotenv
+
 
 app = Flask(__name__)
-app.secret_key = "secretkey"
+app.secret_key=os.environ.get("APP_SECRET_KEY")
 
 
-# GET CONNECTION FROM FLASK
+
 def get_connection():
+    """Returnerer en aktiv database-tilkobling basert på miljøvariabler."""
     return mysql.connector.connect(
-        host="10.200.14.11",
-        # host="localhost",
-        user="absolute_solver",
-        password="silly",
-        database="library_db",
+        host=os.environ.get("DB_HOST", "localhost"),
+        user=os.environ.get("DB_USER"),
+        password=os.environ.get("DB_PASSWORD"),
+        database=os.environ.get("DB_NAME"),
+
     )
+
 
 
 @app.route("/")
