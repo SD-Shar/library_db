@@ -330,7 +330,17 @@ def faq_lib():
     if session.get("rolle") == "admin":
         mydb = get_connection()
         mycursor = mydb.cursor()
-        mycursor.execute("SELECT * FROM ny_faq WHERE bruker_id != 1")
+        
+        # ![19/5/26]
+        if request.method == "POST":
+            faq_id = request.form["faq_id"]
+            svar = request.form["svar"]
+            
+            mycursor.execute("UPDATE ny_faq SET svar = %s WHERE id=%s", (svar, faq_id))
+            
+            mydb.commit()
+                                                                  # ![20/5/26] for dissapearing stuff
+        mycursor.execute("SELECT * FROM ny_faq WHERE bruker_id != 1 AND (svar is NULL)")
         ny_q = mycursor.fetchall()
 
         mycursor.close()

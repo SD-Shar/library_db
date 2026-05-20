@@ -12,22 +12,29 @@
 
     <div class="faq_lib">
 
-        
-    <div class="backLink" id="backLink">
-        <a href="/login/homepage_lib">&larr; Back to homepage</a>
+        <div class="backLink" id="backLink">
+            <a href="/login/homepage_lib">&larr; Back to homepage</a>
 
-    </div>
+        </div>
 
 
-    <h3>Customer questions</h3>
+        <h3>Customer questions</h3>
 
-    <div class="userQ">
-        {% for q in ny_q %}
+        <div class="userQ">
+            {% for q in ny_q %}
 
-        <h2 class="customer_q">{{ q[1] }}. {{ q[2]}} --- Asked: ({{ q[3] }})</h2>
+            <h2 class="customer_q">{{ q[1] }}. {{ q[2]}} | Asked: ({{ q[3] }})</h2>
 
-        {% endfor %}
-    </div>
+            <form method="POST">
+                <input type="hidden" name="faq_id" value="{{ q[0] }}">
+
+                <h4>Reply:</h4>
+                <input type="text" name="svar" placeholder="Reply...">
+                <button type="submit">Send reply</button>
+            </form>
+
+            {% endfor %}
+        </div>
     </div>
 
 

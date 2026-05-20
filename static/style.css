@@ -252,6 +252,16 @@ table {
     color: rgb(241, 199, 199);
 }
 
+.bookQ {
+    background-color: rgb(148, 53, 53);
+    padding: 1%;
+    margin: 1%;
+    border-radius: 0.5vh;
+}
+
+.bookQ>a{
+    color: white;
+}
 
 /* LIBRARIAN OVERVIEW (besitlling) */
 
@@ -342,11 +352,11 @@ a:hover {
     border-radius: 1vh;
 }
 
-.awnsers{
+.awnsers {
     color: rgb(237, 186, 186);
 }
 
-.faq_button{
+.faq_button {
     display: flex;
     justify-self: flex-end;
     justify-content: center;
@@ -357,20 +367,39 @@ a:hover {
     border-radius: 0.5vh;
     font-size: large;
     font-weight: bold;
-    color:rgb(237, 186, 186);
+    color: rgb(237, 186, 186);
 }
 
 
-.userQ{
+.userQ {
     background-color: rgb(237, 186, 186);
-    padding: 0.1%;
+    padding: 1%;
     width: 50%;
     border-radius: 1vh;
     margin: 1%;
 }
 
-.customer_q{
+.customer_q {
     padding: 1%;
     font-size: medium;
-    color: rgb(95, 9, 9);;
+    color: rgb(95, 9, 9);
+    ;
+}
+
+
+.faq_lib {
+    margin: 1%;
+}
+
+
+button:hover{
+    scale: 0.9;
+    opacity: 90%;
+    transition: 0.5s;
+}
+
+a:hover{
+    scale: 1.1;
+    opacity: 50%;
+    transition: 0.5s;
 }

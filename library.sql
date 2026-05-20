@@ -115,5 +115,11 @@ INSERT INTO ny_faq (bruker_id, sporsmal, opprettet) VALUES
 ALTER TABLE ny_faq ADD COLUMN svar TEXT;
 
 
-
-
+INSERT INTO ny_faq (svar) VALUES
+('You can borrow a book by pressing the "Borrow Book" button beside the book.'),
+('You can return a book by going to your "borrowed books" page and clicking "Return Book".'),
+('You can request to have your account deleted by emailing us at 'library@notascam.com.''),
+('You can request to have your account deleted by emailing us at 'library@notascam.com',MAKE SURE to return all books before requesting to delete your account.'),
+('You can contact us on 'library@notascam.com'.'),
+('Your personal data is stored safely in a database with limited access, passwords are securely hashed and private, and all your personal records and data will be removed upon delete of an account'),
+('If your question is not here, please feel free to ask us here below, an administrator will contact you on mail as soon as possible.');
