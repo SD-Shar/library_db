@@ -17,6 +17,7 @@ def get_connection():
         host=os.environ.get("DB_HOST", "localhost"),
         user=os.environ.get("DB_USER"),
         password=os.environ.get("DB_PASSWORD"),
+        use_pure=True,
         database=os.environ.get("DB_NAME"),
 
     )
