@@ -10,62 +10,67 @@
 
 <body>
 
-    <div class="backLink" id="backLink">
 
-        <a href="/login/browse_kunde">&larr; Back to library</a>
+    <div class="mainPage">
+        <div class="backLink" id="backLink">
 
-    </div>
+            <a href="/login/browse_kunde">&larr; Back to library</a>
 
-    <h1>Frequently asked Questions:</h1>
-    <br>
-    <div class="questions">
-        {% for q in init_q %}
+        </div>
 
-        <h3>{{ q[0] }}. {{ q[2] }}</h3>
-
-        {% endfor %}
-
-    </div>
-    <br>
-
-    <div class="awnsers">
-        <p>1) You can borrow a book by pressing the "Borrow Book" button beside the book</p>
-        <p>2) You can return a book by going to your "borrowed books" page and clicking "Return Book".</p>
-        <p>3) You can request to have your account deleted by emailing us at 'library@notascam.com'.
-            <br>MAKE SURE to return all books before requesting to delete your account.
-        </p>
-        <p>4) You can contact us on 'library@notascam.com'.</p>
-        <p>5) Your personal data is stored safely in a database with limited access,
-            passwords are securely hashed and private,
-            <br>
-            and all your personal records and data will be removed upon delete of an account
-        </p>
-        <p>6) If your question is not here, please feel free to ask us here below,
-            <br>an administrator will contact you on mail as soon as possible.
-        </p>
-    </div>
-<br>
-<br>
-    <h3>Do you have other questions? Ask here!</h3>
-    <form method="POST" action="{{ url_for('faq_kunde') }}">
-        <label for="new_q">Your question:</label>
+        <h1>Frequently asked Questions:</h1>
         <br>
-        <input type="text" id="new_q" name="new_q" placeholder="How do I find...">
+        <div class="questions">
+            {% for q in init_q %}
 
-        <button type="submit">Ask question</button>
-    </form>
-<br>
-    <h3>Users questions:</h3>
+            <h3>{{ q[0] }}. {{ q[2] }}</h3>
 
-    <div class="userQ">
-        {% for q in ny_q %}
+            {% endfor %}
 
-        <h2 class="customer_q">{{ q[2]}}</h2>
+        </div>
+        <br>
 
-        {% if q[4] %}
-        <p>Librarian Awnser: {{ q[4] }}</p> 
+        <div class="awnsers">
+            <p>1) You can borrow a book by pressing the "Borrow Book" button beside the book</p>
+            <p>2) You can return a book by going to your "borrowed books" page and clicking "Return Book".</p>
+            <p>3) You can request to have your account deleted by emailing us at 'library@notascam.com'.
+                <br>MAKE SURE to return all books before requesting to delete your account.
+            </p>
+            <p>4) You can contact us on 'library@notascam.com'.</p>
+            <p>5) Your personal data is stored safely in a database with limited access,
+                passwords are securely hashed and private,
+                <br>
+                and all your personal records and data will be removed upon delete of an account
+            </p>
+            <p>6) If your question is not here, please feel free to ask us here below,
+                <br>an administrator will contact you on mail as soon as possible.
+            </p>
+        </div>
+        <br>
+        <br>
+        <h3>Do you have other questions? Ask here!</h3>
+        <form method="POST" action="{{ url_for('faq_kunde') }}">
+            <label for="new_q">Your question:</label>
+            <br>
+            <input type="text" id="new_q" name="new_q" placeholder="How do I find...">
 
-        {% endfor %}
+            <button type="submit">Ask question</button>
+        </form>
+        <br>
+        <h3>Users questions:</h3>
+
+        <div class="userQ">
+            {% for q in ny_q %}
+
+            <h2 class="customer_q">{{ q[2]}}</h2>
+
+            {% if q[4] %}
+            <p>Librarian Awnser: {{ q[4] }}</p>
+
+            {% endif %}
+            {% endfor %}
+
+        </div>
     </div>
 
 </body>

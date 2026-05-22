@@ -199,9 +199,6 @@ def return_book(bok_id):
 @app.route("/faq_kunde", methods=["GET", "POST"])
 def faq_kunde():
 
-    if "epost" not in session:
-        return redirect(url_for("login"))
-
     mydb = get_connection()
     mycursor = mydb.cursor()
 
@@ -228,8 +225,8 @@ def faq_kunde():
     # ny_q = mycursor.fetchall()
     
     # ![19/5/26] - NEW personal qquestions
-    bruker_id = session[bruker_id]
-    mycursor.execute("SELECT * FROM ny_faq WHERE bruker_id=%s", (bruker_id))
+    bruker_id = session["bruker_id"]
+    mycursor.execute("SELECT * FROM ny_faq WHERE bruker_id=%s", (bruker_id,))
     ny_q = mycursor.fetchall()
 
     # mycursor.execute("SELECT * FROM ny_faq")
