@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview of customers</title>
+    <link rel="stylesheet" href="style/try.css">
+</head>
+
+<body>
+
+
+    <div class="LIBoverview">
+
+        <div class="backLink" id="backLink">
+
+            <a href="/login/homepage_lib">&larr; Back to homepage</a>
+
+        </div>
+
+        <h1>Customers</h1>
+
+        <table>
+            <tr class="Titles">
+                <th>Customer ID:</th>
+                <th>First Name:</th>
+                <th>Last Name:</th>
+                <th>Email Address:</th>
+                <th>Phone Number:</th>
+                <th>Edit Users:</th>
+            </tr>
+
+            {% for c in brukere %}
+
+            <tr class="customers">
+                <td>{{ c[0] }}</td>
+                <td>{{ c[1] }}</td>
+                <td>{{ c[2] }}</td>
+                <td>{{ c[3] }}</td>
+                <td>{{ c[4] }}</td>
+
+                <td>
+                    <a href="{{ url_for('edit_kunde', cid=c[0]) }}" class="EditBTN">Edit User</a>
+                    <a href="{{ url_for('delete_kunde', cid=c[0]) }}" class="DeleteBTN"
+                        onclick="return confirm('Delete user?');">Delete User</a>
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+    </div>
+
+
+</body>
+
+</html>

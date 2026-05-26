@@ -180,6 +180,11 @@ table {
     color: rgb(241, 199, 199);
 }
 
+/* librarian awnser/reply on faq site */
+.lib_a{
+    font-size: small;
+}
+
 /* LIBRARIAN HOMEPAGE  */
 
 .homepageLIB {
@@ -380,10 +385,8 @@ a:hover {
 }
 
 .customer_q {
-    padding: 1%;
-    font-size: medium;
+    font-size: large;
     color: rgb(95, 9, 9);
-    ;
 }
 
 

@@ -5,36 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your borrowed books</title>
-    <link rel="stylesheet" href="try.css">
+   <link rel="stylesheet" href="style/try.css">
 </head>
 
 <body>
 
     <div class="mainPage">
-
         <div class="backLink" id="backLink">
-            <a href="/login/browse_kunde">&larr;</a>
+
+            <a href="/login/browse_kunde">&larr; Back to library</a>
+
         </div>
+        <h1>Your borrowed books</h1>
 
-        <h1>Books</h1>
-
-        <h2>Your borrowed books</h2>
-
-        <div class="borrowedBOOKS">
-
+        <div class="borrowed_books">
             <table>
 
                 <tr class="Titles">
                     <th>Books you've borrowed:</th>
                     <th>Author name:</th>
                     <th>Date of order:</th>
+                    <th>Return date:</th>
                     <th> - Return book - </th>
                 </tr>
 
+                {% for c in borrowed_books %}
                 <tr class="borrowedUser">
-                    <td>Book 1</td>
-                    <td>Some guy</td>
-                    <td>1/2/26</td>
+                    <td>{{ c[1] }}</td>
+                    <td>{{ c[2] }}</td>
+                    <td>{{ c[4] }}</td>
+                    <td>{{ c[5] }}</td>
                     <td>
                         <div class="returnBTN" id="returnBTN">
                             <a href="{{ url_for('return_book', bok_id=c[0]) }}"
@@ -43,13 +43,14 @@
 
                         </div>
                     </td>
+
+
                 </tr>
 
-
+                {% endfor %}
 
             </table>
         </div>
-
     </div>
 
 

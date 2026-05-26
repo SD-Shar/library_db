@@ -5,18 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Borrowed books (librarian)</title>
-    <link rel="stylesheet" href="try.css">
+    <link rel="stylesheet" href="style/try.css">
 </head>
 
 <body>
 
-
     <div class="LIBoverview">
 
         <div class="backLink" id="backLink">
-            <a href="/login/browse_kunde">&larr;</a>
-        </div>
+            <a href="/login/homepage_lib">&larr; Back to homepage</a>
 
+        </div>
 
         <h1>Customers and what they've borrowed</h1>
         <h2>Librarian page</h2>
@@ -24,24 +23,21 @@
         <table>
             <tr class="Titles">
                 <th>Book</th>
-                <th>Borrowed by</th>
+                <th>Borrowed by (customer ID)</th>
                 <th>Time of order</th>
             </tr>
-
+            {% for c in bestilling %}
             <tr class="orders">
-                <td>bookbookb</td>
-                <td>customer id (hopefully more info if time)</td>
-                <td>10:30 2/2/26 idk man</td>
+                <td>{{c[0]}}</td>
+                <td>{{c[1]}}</td>
+                <td>{{c[2]}}</td>
 
             </tr>
-
+            {% endfor %}
 
 
         </table>
     </div>
-
-
-
 
 
 </body>

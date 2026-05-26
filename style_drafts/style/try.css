@@ -11,7 +11,7 @@ h1 {
 
 h2 {
     font-family: 'Garamond';
-    color: rgb(190, 128, 128);
+    color: rgb(187, 98, 98);
 }
 
 h3 {
@@ -29,11 +29,16 @@ h3 {
     color: black;
 
     font-weight: bold;
-    font-size: x-large;
 
     padding: 0.5%;
 
     border-radius: 0.5vh;
+}
+
+div>a:hover {
+    scale: 1.1;
+    transition: 0.5s;
+    opacity: 90%;
 }
 
 .mainPage {
@@ -81,7 +86,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(233, 167, 167);
+    background-color: rgb(239, 191, 177);
     margin: 1%;
     padding: 1%;
     border-radius: 0.5vh;
@@ -135,9 +140,6 @@ table {
 
 /* USER BORROWED PAGE */
 
-.borrowed_books {
-    text-align: left;
-}
 
 .borrowedBOOKS {
     font-family: 'Garamond';
@@ -146,20 +148,23 @@ table {
 .bestillingTitles {
     display: flex;
     justify-content: space-around;
-    padding: 1%;
 }
 
 .borrowedUser {
-    background-color: rgb(241, 199, 199);
-    padding: 5%;
-
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(239, 191, 177);
+    margin: 1%;
+    padding: 1%;
     border-radius: 0.5vh;
 }
 
-.borrowedUser>td{
+.borrowedUser>td {
     flex: 1;
     text-align: center;
 }
+
 
 .returnBTN {
     background-color: rgb(95, 9, 9);
@@ -167,10 +172,17 @@ table {
     border-radius: 0.5vh;
     border-right: 0;
     border-top: 0;
+    width: 50%;
+    margin-left: 6vw;
 }
 
 .returnBTN>a {
     color: rgb(241, 199, 199);
+}
+
+/* librarian awnser/reply on faq site */
+.lib_a{
+    font-size: small;
 }
 
 /* LIBRARIAN HOMEPAGE  */
@@ -235,7 +247,7 @@ table {
 }
 
 .bookC {
-    background-color: rgb(122, 43, 43);
+    background-color: rgb(148, 53, 53);
     padding: 1%;
     margin: 1%;
     border-radius: 0.5vh;
@@ -245,6 +257,16 @@ table {
     color: rgb(241, 199, 199);
 }
 
+.bookQ {
+    background-color: rgb(148, 53, 53);
+    padding: 1%;
+    margin: 1%;
+    border-radius: 0.5vh;
+}
+
+.bookQ>a{
+    color: white;
+}
 
 /* LIBRARIAN OVERVIEW (besitlling) */
 
@@ -299,7 +321,7 @@ input {
 
 .customers {
     display: flex;
-    background-color: rgb(241, 199, 199);
+    background-color: rgb(239, 191, 177);
     margin: 1%;
     padding: 1%;
 }
@@ -307,4 +329,80 @@ input {
 .customers>td {
     text-align: center;
     flex: 1;
+}
+
+
+a:hover {
+    scale: 1.1;
+    transition: 0.5s;
+
+}
+
+
+.EditBTN {
+    color: rgb(237, 186, 186);
+    background-color: rgb(98, 50, 33);
+    padding: 4%;
+
+    border: 1vh solid none;
+    border-radius: 1vh;
+}
+
+.DeleteBTN {
+    color: rgb(237, 186, 186);
+    background-color: rgb(88, 38, 24);
+    padding: 4%;
+
+    border: 1vh solid none;
+    border-radius: 1vh;
+}
+
+.awnsers {
+    color: rgb(239, 191, 177);
+}
+
+.faq_button {
+    display: flex;
+    justify-self: flex-end;
+    justify-content: center;
+    background-color: rgb(128, 27, 27);
+    width: 30%;
+    margin: 1%;
+    padding: 1%;
+    border-radius: 0.5vh;
+    font-size: large;
+    font-weight: bold;
+    color: rgb(237, 186, 186);
+}
+
+
+.userQ {
+    background-color: rgb(237, 186, 186);
+    padding: 1%;
+    width: 50%;
+    border-radius: 1vh;
+    margin: 1%;
+}
+
+.customer_q {
+    font-size: large;
+    color: rgb(95, 9, 9);
+}
+
+
+.faq_lib {
+    margin: 1%;
+}
+
+
+button:hover{
+    scale: 0.9;
+    opacity: 90%;
+    transition: 0.5s;
+}
+
+a:hover{
+    scale: 1.1;
+    opacity: 50%;
+    transition: 0.5s;
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit user</title>
+    <link rel="stylesheet" href="style/try.css">
+</head>
+
+<body>
+
+    <div class="backLink" id="backLink">
+
+        <a href="/login">&larr; Back to homepage</a>
+
+    </div>
+
+    <h1>Edit User Information: </h1>
+    <form method="POST" action="{{ url_for('update_kunde') }}">
+
+        <input type="hidden" name="id" value="{{ cid }}">
+
+        <label for="fornavn">First name:</label><br>
+        <input type="name" name="fornavn" value="{{ bruker[0] }}"><br><br>
+
+        <label for="etternavn">Last name:</label><br>
+        <input type="name" name="etternavn" value="{{ bruker[1] }}"><br><br>
+
+        <label for="epost">E-mail:</label><br>
+        <input type="email" name="epost" value="{{ bruker[2] }}"><br><br>
+
+        <label for="telefonnummer">Phone Number:</label><br>
+        <input type="telefonnummer" name="telefonnummer" value="{{ bruker[3] }}"><br><br>
+
+
+        <button type="submit">Update User</button>
+    </form>
+
+
+</body>
+</html>
