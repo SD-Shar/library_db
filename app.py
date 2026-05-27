@@ -355,30 +355,47 @@ def faq_lib():
 
 # LIBRARIAN AUTHORITIES
 
+
+@app.route("/login/homepage_lib/customers/edit_kunde/<int:cid>", methods=["GET", "POST"])
+def edit_kunde(cid):
+    if session.get("rolle") == "admin":
+        mydb = get_connection()
+        mycursor = mydb.cursor()
+        
+        mycursor.execute("SELECT fornavn, etternavn, epost, telefonnummer FROM brukere WHERE id=%s, (cid,),")
+        bruker = mycursor.fetchone()
+        
+        mycursor.commit()
+        mycursor.close()
+        mydb.close()
+        
+        return render_template("edit_kunde.html", bruker=bruker, cid=cid)
+    return redirect(url_for("login"))
+
 # EDIT CUSTOMER - (for librarian - viser informasjon)
 
 
-@app.route(
-    "/login/homepage_lib/customers/edit_kunde/<int:cid>", methods=["GET", "POST"]
-)
-def edit_kunde(cid):
-    if session.get("rolle") == "admin":
+# @app.route(
+#     "/login/homepage_lib/customers/edit_kunde/<int:cid>", methods=["GET", "POST"]
+# )
+# def edit_kunde(cid):
+#     if session.get("rolle") == "admin":
 
-        mydb = get_connection()
-        mycursor = mydb.cursor()
+#         mydb = get_connection()
+#         mycursor = mydb.cursor()
 
-        mycursor.execute(
-            "SELECT fornavn, etternavn, epost, telefonnummer FROM brukere WHERE id=%s",
-            (cid,),
-        )
+#         mycursor.execute(
+#             "SELECT fornavn, etternavn, epost, telefonnummer FROM brukere WHERE id=%s",
+#             (cid,),
+#         )
+        
+#         bruker = mycursor.fetchone()
 
-        bruker = mycursor.fetchone()
+#         mycursor.close()
+#         mydb.close()
 
-        mycursor.close()
-        mydb.close()
-
-        return render_template("edit_kunde.html", bruker=bruker, cid=cid)
-    return redirect(url_for("login"))
+#         return render_template("edit_kunde.html", bruker=bruker, cid=cid)
+#     return redirect(url_for("login"))
 
 
 @app.route("/customers/update_kunde", methods=["POST"])

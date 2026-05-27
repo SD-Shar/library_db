@@ -81,6 +81,9 @@ og de som har tilgang til nett og liker å bruke nettbaserte bestillinger.
 13. Mulighet å redigere brukere sin informasjon
 14. Mulighet til å slette kunder (og bestillingene)
 15. Leveringsfrist for bøkene
+16. FAQ-side
+17. Mulighet til å stille spørmål til biblioteket
+18. Mulighet å få svar på spørsmål fra bibliotekar
 
 
 
@@ -193,6 +196,22 @@ dette er mulig med default kommandoen 'current_timestamp().
 | leveringsfrist    | date      | YES  |     | NULL                |       |
 +-------------------+-----------+------+-----+---------------------+-------+
 
+ ```
+
+**FAQ-tabell**
+- Navn i databasen: ny_faq
+- Spørsmålene har en egen id, tilknyttet bruker id, plass for spørsmål og viser når den er opprettet.
+- Den har også en plass for svar, som blir satt inn når bibliotekaren skriver inn et svar.
+```markdown
++-----------+----------+------+-----+---------------------+----------------+
+| Field     | Type     | Null | Key | Default             | Extra          |
++-----------+----------+------+-----+---------------------+----------------+
+| id        | int(11)  | NO   | PRI | NULL                | auto_increment |
+| bruker_id | int(11)  | NO   | MUL | NULL                |                |
+| sporsmal  | text     | NO   |     | NULL                |                |
+| opprettet | datetime | YES  |     | current_timestamp() |                |
+| svar      | text     | YES  |     | NULL                |                |
++-----------+----------+------+-----+---------------------+----------------+
  ```
 
 
