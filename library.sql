@@ -9,6 +9,16 @@ CREATE TABLE brukere (
     rolle VARCHAR(10) NOT NULL DEFAULT 'bruker'
 );
 
+
+CREATE TABLE folk (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT  NULL,
+    navn VARCHAR(50) NOT NULL,
+    tlf VARCHAR(15) NOT NULL,
+    rolle VARCHAR(10) NOT NULL DEFAULT 'lever'
+);
+
+INSERT INTO folk (navn, tlf) VALUES ('aaaa', '1234');
+
 # --Opprett bøker med id nummer som primærnøkkel
 CREATE TABLE boker (
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
@@ -123,3 +133,5 @@ INSERT INTO ny_faq (svar) VALUES
 ('You can contact us on 'library@notascam.com'.'),
 ('Your personal data is stored safely in a database with limited access, passwords are securely hashed and private, and all your personal records and data will be removed upon delete of an account'),
 ('If your question is not here, please feel free to ask us here below, an administrator will contact you on mail as soon as possible.');
+
+

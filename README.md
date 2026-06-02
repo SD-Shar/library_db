@@ -35,6 +35,9 @@ og de som har tilgang til nett og liker å bruke nettbaserte bestillinger.
 ```markdown
 - Det er mulig å låne og levere tilbake bøker som kunde.
 - Det er lagt til "antall bøker" i boklisten. (også oppdatert for å legge til bøker)
+- Det er mulig for admin å redigere informasjonen til kunder om ønsket, og slette de.
+- Det finnes en FAQ-side der brukeren kan se de mest vanlige spørsmålene stilt og svarene til de.
+- Det er også mulighet for å stille egne spørsmål og for en bibliotekar(admin) til å svare på spørsmålet.
 ```
 
 **Installasjon og kjøring av prosjektet:**
