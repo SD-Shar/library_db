@@ -325,42 +325,67 @@ def add_books_lib():
         )
 
 
-# ![19/5/26] tirsdag - customer service???
-# CUSTOMER SERVICE (for librarian)
-@app.route("/login/homepage_lib/faq_lib", methods=["GET", "POST"])
-def faq_lib():
-
-    if session.get("rolle") == "admin":
-        mydb = get_connection()
-        mycursor = mydb.cursor()
-        
-        # ![19/5/26]
-        if request.method == "POST":
-            faq_id = request.form["faq_id"]
-            svar = request.form["svar"]
-            
-            mycursor.execute("UPDATE ny_faq SET svar = %s WHERE id=%s", (svar, faq_id))
-            
-            mydb.commit()
-        # ![20/5/26] for dissapearing stuff
-        mycursor.execute("SELECT * FROM ny_faq WHERE bruker_id != 1 AND (svar is NULL)")
-        ny_q = mycursor.fetchall()
-
-        mycursor.close()
-        mydb.close()
-
-        return render_template("faq_lib.html", ny_q=ny_q)
-    return redirect(url_for("login"))
 
 
 # LIBRARIAN AUTHORITIES
 
+# ![19/5/26] tirsdag - customer service???
+# CUSTOMER SERVICE (for librarian)
+
+
 
 # EDIT CUSTOMER - (for librarian - viser informasjon)
-@app.route("login/homepage_lib/edit_kunde", methods=["GET", "POST"])
+@app.route("/login/homepage_lib/customers/edit_kunde/<int:cid>", methods=["GET", "POST"])
+def edit_kunde(cid):
+    if session.get("rolle") == "admin":
+
+        mydb = get_connection()
+        mycursor = mydb.cursor()
+
+        mycursor.execute(
+            "SELECT fornavn, etternavn, epost, telefonnummer FROM brukere WHERE id=%s",(cid,),)
+        
+        bruker = mycursor.fetchone()
+
+        mycursor.close()
+        mydb.close()
+
+        return render_template("edit_kunde.html", bruker=bruker, cid=cid)
+    return redirect(url_for("login"))
+@app.route("/customers/update_kunde", methods=["POST"])
+def update_kunde():
+    cid = request.form["id"]
+    fornavn = request.form["fornavn"]
+    etternavn = request.form["etternavn"]
+    epost = request.form["epost"]
+    telefonnummer = request.form["telefonnummer"]
+
+    mydb = get_connection()
+    mycursor = mydb.cursor()
+
+    mycursor.execute(
+        "UPDATE brukere SET fornavn=%s, etternavn=%s, epost=%s, telefonnummer=%s WHERE id=%s",
+        (fornavn, etternavn, epost, telefonnummer, cid),
+    )
+
+    mycursor.close()
+    mydb.commit()
+    mydb.close()
+
+    return redirect(url_for("customers"))
 
 
+@app.route("/customers/delete_kunde/<int:cid>")
+def delete_kunde(cid):
+    mydb = get_connection()
+    mycursor = mydb.cursor()
 
+    mycursor.execute("DELETE FROM bestilling WHERE bruker_id=%s", (cid,))
+    mycursor.execute("DELETE FROM brukere WHERE id=%s", (cid,))
+
+    mydb.commit()
+    mydb.close()
+    return redirect(url_for("customers"))
 
 if __name__ == "__main__":
     app.run(debug=True)
