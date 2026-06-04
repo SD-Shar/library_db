@@ -1,0 +1,9 @@
+# ![4/6/26] 
+# Ignorer stuff
+.env
+__pycache__/
+*.pyc
+.vscode/
+.venv/
+env/
+venv/
