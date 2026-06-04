@@ -21,21 +21,22 @@
 
         <h3>{{ q[1] }}. {{ q[2] }} │ Asked: {{ q[3] }}</h3>
 
-        <div class="new_q_lib">
+        <form method="POST">
 
-            <form method="POST">
-
+            <div class="lib_q">
                 <h4>Reply:</h4>
                 <input type="hidden" name="q_id" value="{{ q[0] }}">
                 <input type="text" name="svar" placeholder="Awnser question...">
 
                 <button type="submit">Send Reply</button>
 
-            </form>
+            </div>
 
-            {% endfor %}
+        </form>
 
-        </div>
+        {% endfor %}
+
+
     </div>
 
 </body>

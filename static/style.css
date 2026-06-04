@@ -409,3 +409,12 @@ a:hover{
     opacity: 50%;
     transition: 0.5s;
 }
+
+
+.lib_q{
+    background-color: rgb(237, 186, 186);
+    margin: 1%;
+    border-radius: 1vh;
+    padding: 1%;
+    width: 30%;
+}
