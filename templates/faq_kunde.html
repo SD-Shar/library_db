@@ -62,7 +62,12 @@
         <div class="userQ">
             {% for q in ny_q %}
 
-            <h2 class="customer_q">{{ q[2]}}</h2>
+            <h2 class="customer_q">{{ q[2] }}</h2>
+
+            {% if q[4] %}
+            <h4>Librarian Reply: {{ q[4] }}</h4>
+
+            {% endif %}
 
             {% endfor %}
 

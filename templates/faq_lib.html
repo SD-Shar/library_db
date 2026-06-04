@@ -15,23 +15,27 @@
             <a href="/login/homepage_lib">&larr; Back to homepage</a>
         </div>
 
-        <h1>Awnser customer questions:</h1>
+        <h2>Awnser customer questions:</h2>
 
         {% for q in ny_q %}
 
-        <h2>{{ q[1] }}. {{ q[2] }} -- Asked: {{ q[3] }}</h2>
+        <h3>{{ q[1] }}. {{ q[2] }} │ Asked: {{ q[3] }}</h3>
 
-        <form method="POST">
+        <div class="new_q_lib">
 
-            <h3>Reply:</h3>
-            <input type="hidden" name="q_id" value="{{ cid }}">
-            <input type="text" name="svar" placeholder="Awnser question...">
+            <form method="POST">
 
-            <button type="submit">Send Reply</button>
+                <h4>Reply:</h4>
+                <input type="hidden" name="q_id" value="{{ q[0] }}">
+                <input type="text" name="svar" placeholder="Awnser question...">
 
-        </form>
+                <button type="submit">Send Reply</button>
 
-        {% endfor %}
+            </form>
+
+            {% endfor %}
+
+        </div>
     </div>
 
 </body>

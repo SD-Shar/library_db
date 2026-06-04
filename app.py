@@ -255,6 +255,7 @@ def homepage_lib():
         mydb.close()
 
         return render_template("homepage_lib.html", epost=session["epost"], boker=boker)
+    
     return redirect(url_for("login"))
 
 
@@ -262,6 +263,7 @@ def homepage_lib():
 @app.route("/login/homepage_lib/customers")
 def customers():
     if session.get("rolle") == "admin":
+        
         mydb = get_connection()
         mycursor = mydb.cursor()
         mycursor.execute("SELECT * FROM brukere")
@@ -271,6 +273,7 @@ def customers():
         mydb.close()
 
         return render_template("customers.html", brukere=brukere)
+    
     return redirect(url_for("login"))
 
 
@@ -283,6 +286,7 @@ def customers():
 @app.route("/login/homepage_lib/overview_lib")
 def overview_lib():
     if session.get("rolle") == "admin":
+        
         mydb = get_connection()
         mycursor = mydb.cursor()
         mycursor.execute("SELECT * FROM bestilling")
@@ -292,6 +296,7 @@ def overview_lib():
         mydb.close()
 
         return render_template("overview_lib.html", bestilling=bestilling)
+    
     return redirect(url_for("login"))
 
 
@@ -320,11 +325,41 @@ def add_books_lib():
             mydb.close()
 
             return redirect(url_for("homepage_lib"))
-        return render_template(
-            "add_books_lib.html",
-        )
+        return render_template("add_books_lib.html")
+    
+    return redirect(url_for("login"))
         
+        
+
+
  # LIBRARIAN AUTHORITIES:
+ 
+ # CUSTOMER SERVICE
+@app.route("/login/homepage_lib/faq_lib", methods=["GET", "POST"])
+def faq_lib():
+    if session.get("rolle") == "admin":
+        
+        mydb = get_connection()
+        mycursor = mydb.cursor()
+        
+        if request.method == "POST":
+            q_id = request.form["q_id"]
+            svar = request.form["svar"]
+            
+            mycursor.execute("UPDATE ny_faq SET svar=%s WHERE id=%s", (svar, q_id))
+            
+            mydb.commit()
+            
+        mycursor.execute("SELECT * FROM ny_faq WHERE bruker_id != 1 AND svar IS NULL")
+        ny_q = mycursor.fetchall()
+            
+        mydb.close()
+        mycursor.close()
+            
+        return render_template("faq_lib.html", ny_q=ny_q)
+    return redirect(url_for("login"))
+        
+
  
  # EDIT USER INFORMATION    
 
@@ -387,31 +422,6 @@ def delete_kunde(cid):
         
         return redirect(url_for("customers"))
     return redirect(url_for("login"))
-        
-        
-        
-        
-@app.route("/login/homepage_lib/faq_lib", methods=["GET", "POST"])
-def faq_lib():
-    if session.get("rolle") == "admin":
-        
-        mydb = get_connection()
-        mycursor = mydb.cursor()
-        
-        if request.method == "POST":
-            q_id = request.form["id"]
-            svar = request.form["svar"]
-            
-            mycursor.execute("UPDATE ny_faq SET svar=%s WHERE id=%s", (svar, q_id))
-            
-            mydb.commit()
-            
-            mydb.close()
-            mycursor.close()
-            
-        return render_template("faq_lib.html")
-    return redirect(url_for("login"))
-        
 
 
 if __name__ == "__main__":
