@@ -344,6 +344,7 @@ def edit_kunde(cid):
         return render_template("edit_kunde.html", bruker=bruker, cid=cid)
     return redirect(url_for("login"))
 
+
 @app.route("/customers/update_kunde", methods=["POST"])
 def update_kunde():
     if session.get("rolle") == "admin":
@@ -395,12 +396,21 @@ def faq_lib():
     if session.get("rolle") == "admin":
         
         mydb = get_connection()
-        mycursor = mydb.cusor()
+        mycursor = mydb.cursor()
         
         if request.method == "POST":
-            nyq_id = request.form["id"]
+            q_id = request.form["id"]
             svar = request.form["svar"]
             
+            mycursor.execute("UPDATE ny_faq SET svar=%s WHERE id=%s", (svar, q_id))
+            
+            mydb.commit()
+            
+            mydb.close()
+            mycursor.close()
+            
+        return render_template("faq_lib.html")
+    return redirect(url_for("login"))
         
 
 

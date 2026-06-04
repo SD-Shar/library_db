@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ librarian</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
+    <div class="faq_lib">
 
-    <h1>Awnser customer questions:</h1>
+        <div class="backLink" id="backLink">
+            <a href="/login/homepage_lib">&larr; Back to homepage</a>
+        </div>
 
-    
-    
+        <h1>Awnser customer questions:</h1>
+
+        {% for q in ny_q %}
+
+        <h2>{{ q[1] }}. {{ q[2] }} -- Asked: {{ q[3] }}</h2>
+
+        <form method="POST">
+
+            <h3>Reply:</h3>
+            <input type="hidden" name="q_id" value="{{ cid }}">
+            <input type="text" name="svar" placeholder="Awnser question...">
+
+            <button type="submit">Send Reply</button>
+
+        </form>
+
+        {% endfor %}
+    </div>
+
 </body>
+
 </html>
