@@ -28,7 +28,8 @@
                 <th>Last Name:</th>
                 <th>Email Address:</th>
                 <th>Phone Number:</th>
-                <th>Edit Users:</th>
+                <th>Edit users:</th>
+          
             </tr>
 
             {% for c in brukere %}
@@ -39,12 +40,12 @@
                 <td>{{ c[2] }}</td>
                 <td>{{ c[3] }}</td>
                 <td>{{ c[4] }}</td>
+                <td>
+                    <a href="{{ url_for('edit_kunde', cid=c[0]) }}" class="editBTN">Edit user</a>
+                    <a href="{{ url_for('delete_kunde', cid=c[0])}}" class="deleteBTN"
+                    onclick="return confirm('Delete this user: {{ c[1] }} {{ c[2] }} ?')">Delete user</a>
+                </td>
 
-                <!-- <td>
-                    <a href="{{ url_for('edit_kunde', cid=c[0]) }}" class="EditBTN">Edit User</a>
-                    <a href="{{ url_for('delete_kunde', cid=c[0]) }}" class="DeleteBTN"
-                        onclick="return confirm('Delete user?');">Delete User</a>
-                </td> -->
             </tr>
 
             {% endfor %}

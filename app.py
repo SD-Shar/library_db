@@ -4,7 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import mysql.connector
 from datetime import date, timedelta
 from dotenv import load_dotenv
-
+from waitress import serve
 
 app = Flask(__name__)
 app.secret_key=os.environ.get("APP_SECRET_KEY")
@@ -323,69 +323,86 @@ def add_books_lib():
         return render_template(
             "add_books_lib.html",
         )
+        
+ # LIBRARIAN AUTHORITIES:
+ 
+ # EDIT USER INFORMATION    
 
-
-
-
-# LIBRARIAN AUTHORITIES
-
-# ![19/5/26] tirsdag - customer service???
-# CUSTOMER SERVICE (for librarian)
-
-
-
-# EDIT CUSTOMER - (for librarian - viser informasjon)
-@app.route("/login/homepage_lib/customers/edit_kunde/<int:cid>", methods=["GET", "POST"])
+@app.route("/login/homepage_lib/customers/edit_kunde/<int:cid>", methods=["GET", "POST"])       
 def edit_kunde(cid):
     if session.get("rolle") == "admin":
-
+        
         mydb = get_connection()
         mycursor = mydb.cursor()
-
-        mycursor.execute(
-            "SELECT fornavn, etternavn, epost, telefonnummer FROM brukere WHERE id=%s",(cid,),)
         
+        mycursor.execute("SELECT fornavn, etternavn, epost, telefonnummer FROM brukere WHERE id=%s", (cid,))
         bruker = mycursor.fetchone()
-
-        mycursor.close()
+        
         mydb.close()
-
+        mycursor.close()
+        
         return render_template("edit_kunde.html", bruker=bruker, cid=cid)
     return redirect(url_for("login"))
+
 @app.route("/customers/update_kunde", methods=["POST"])
 def update_kunde():
-    cid = request.form["id"]
-    fornavn = request.form["fornavn"]
-    etternavn = request.form["etternavn"]
-    epost = request.form["epost"]
-    telefonnummer = request.form["telefonnummer"]
+    if session.get("rolle") == "admin":
+        
+        cid = request.form["id"]
+        fornavn = request.form["fornavn"]
+        etternavn = request.form["etternavn"]
+        epost = request.form["epost"]
+        telefonnummer = request.form["telefonnummer"]
+        
+        mydb = get_connection()
+        mycursor = mydb.cursor()
+        
+        mycursor.execute("UPDATE brukere SET fornavn=%s, etternavn=%s, epost=%s, telefonnummer=%s WHERE id=%s",
+                         (fornavn, etternavn, epost, telefonnummer, cid),)
+        
+        mycursor.close()
+        mydb.commit()
+        mydb.close()
+        return redirect(url_for("customers"))
+    
+    return redirect(url_for("login"))
 
-    mydb = get_connection()
-    mycursor = mydb.cursor()
 
-    mycursor.execute(
-        "UPDATE brukere SET fornavn=%s, etternavn=%s, epost=%s, telefonnummer=%s WHERE id=%s",
-        (fornavn, etternavn, epost, telefonnummer, cid),
-    )
-
-    mycursor.close()
-    mydb.commit()
-    mydb.close()
-
-    return redirect(url_for("customers"))
-
-
+# DELETE USER
+        
 @app.route("/customers/delete_kunde/<int:cid>")
 def delete_kunde(cid):
-    mydb = get_connection()
-    mycursor = mydb.cursor()
+    if session.get("rolle") == "admin":
+        
+        mydb = get_connection()
+        mycursor = mydb.cursor()
+        
+        mycursor.execute("DELETE FROM bestilling WHERE bruker_id=%s", (cid,))
+        mycursor.execute("DELETE FROM brukere WHERE id=%s", (cid,))
+        
+        mydb.commit()
+        mycursor.close()
+        mydb.close()
+        
+        return redirect(url_for("customers"))
+    return redirect(url_for("login"))
+        
+        
+        
+        
+@app.route("/login/homepage_lib/faq_lib", methods=["GET", "POST"])
+def faq_lib():
+    if session.get("rolle") == "admin":
+        
+        mydb = get_connection()
+        mycursor = mydb.cusor()
+        
+        if request.method == "POST":
+            nyq_id = request.form["id"]
+            svar = request.form["svar"]
+            
+        
 
-    mycursor.execute("DELETE FROM bestilling WHERE bruker_id=%s", (cid,))
-    mycursor.execute("DELETE FROM brukere WHERE id=%s", (cid,))
-
-    mydb.commit()
-    mydb.close()
-    return redirect(url_for("customers"))
 
 if __name__ == "__main__":
     app.run(debug=True)

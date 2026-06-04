@@ -19,6 +19,10 @@ h3 {
     color: white;
 }
 
+#h3_v2{
+    color: darkred;
+}
+
 .browse_books {
     display: flex;
     font-family: 'Garamond';
@@ -338,17 +342,16 @@ a:hover {
 
 }
 
-
-.EditBTN {
+.editBTN {
     color: rgb(237, 186, 186);
-    background-color: rgb(98, 50, 33);
+    background-color: rgb(97, 22, 13);
     padding: 4%;
 
     border: 1vh solid none;
     border-radius: 1vh;
 }
 
-.DeleteBTN {
+.deleteBTN {
     color: rgb(237, 186, 186);
     background-color: rgb(88, 38, 24);
     padding: 4%;
