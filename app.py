@@ -22,8 +22,6 @@ def get_connection():
 
     )
 
-
-
 @app.route("/")
 def index():
     return redirect("/signup")
