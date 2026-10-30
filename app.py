@@ -6,21 +6,35 @@ from datetime import date, timedelta
 from dotenv import load_dotenv
 from waitress import serve
 
+load_dotenv()  # Load environment data from .env
+
+
 app = Flask(__name__)
 app.secret_key=os.environ.get("APP_SECRET_KEY")
 
+# def get_connection():
+#     """Returnerer en aktiv database-tilkobling basert på miljøvariabler."""
+#     return mysql.connector.connect(
+#         host=os.environ.get("DB_HOST", "127.0.0.1"),
+#         user=os.environ.get("DB_USER"),
+#         password=os.environ.get("DB_PASSWORD"),
+#         use_pure=True,
+#         database=os.environ.get("DB_NAME"),
+
+#     )
 
 
 def get_connection():
     """Returnerer en aktiv database-tilkobling basert på miljøvariabler."""
     return mysql.connector.connect(
-        host=os.environ.get("DB_HOST", "localhost"),
-        user=os.environ.get("DB_USER"),
-        password=os.environ.get("DB_PASSWORD"),
+        host="127.0.0.1",
+        user="absolute_solver",
+        password="silly",
         use_pure=True,
-        database=os.environ.get("DB_NAME"),
+        database="library_db"
 
     )
+
 
 @app.route("/")
 def index():
@@ -54,38 +68,98 @@ def signup():
     return render_template("signup.html")
 
 
-# LOGIN
-@app.route("/login", methods=["GET", "POST"])
+# # LOGIN
+# @app.route("/login", methods=["GET", "POST"])
+# def login():
+#     if request.method == "POST":
+#         epost = request.form["epost"]
+#         passord = request.form["passord"]
+
+#         conn = get_connection()
+#         cursor = conn.cursor(dictionary=True)
+#         cursor.execute("SELECT * FROM brukere WHERE epost = %s", (epost,))
+#         brukere = cursor.fetchone()
+#         cursor.close()
+#         conn.close()
+
+#         if brukere and check_password_hash(brukere["passord_hash"], passord):
+#             # if brukere and brukere['passord_hash'] == passord:
+#             session["bruker_id"] = brukere["id"]
+#             session["epost"] = brukere["epost"]
+#             session["rolle"] = brukere["rolle"]
+
+#             print(brukere["rolle"])
+
+#             if brukere["rolle"] == "admin":
+#                 return redirect(url_for("homepage_lib"))
+#             else:
+#                 return redirect(url_for("browse_kunde"))
+#         else:
+#             return render_template(
+#                 "login.html", feil_melding="Something's not right, try again"
+#             )
+
+#     return render_template("login.html")
+
+
+# TEST PRINT
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == "POST":
-        epost = request.form["epost"]
-        passord = request.form["passord"]
-
-        conn = get_connection()
-        cursor = conn.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM brukere WHERE epost = %s", (epost,))
-        brukere = cursor.fetchone()
-        cursor.close()
-        conn.close()
-
-        if brukere and check_password_hash(brukere["passord_hash"], passord):
-            # if brukere and brukere['passord_hash'] == passord:
-            session["bruker_id"] = brukere["id"]
-            session["epost"] = brukere["epost"]
-            session["rolle"] = brukere["rolle"]
-
-            print(brukere["rolle"])
-
-            if brukere["rolle"] == "admin":
-                return redirect(url_for("homepage_lib"))
+    if request.method == 'POST':
+        try:
+            # Henter skjemadata
+            epost = request.form["epost"]
+            passord = request.form["passord"]
+            
+            # Oppretter tilkobling (bruker nå dine faste verdier eller fungerende .env)
+            conn = get_connection()
+            cursor = conn.cursor(dictionary=True)
+            cursor.execute("SELECT * FROM brukere WHERE epost = %s", (epost,))
+            brukere = cursor.fetchone()
+            cursor.close()
+            conn.close()
+            
+            if brukere and check_password_hash(brukere["passord_hash"], passord):
+                session["bruker_id"] = brukere["id"]
+                session["epost"] = brukere["epost"]
+                session["rolle"] = brukere["rolle"]
+                
+                print(f"Logget inn bruker med rolle: {brukere['rolle']}")
+                
+                if brukere["rolle"] == "admin":
+                    return redirect(url_for("homepage_lib"))
+                else:
+                    return redirect(url_for("browse_kunde"))
             else:
-                return redirect(url_for("browse_kunde"))
-        else:
-            return render_template(
-                "login.html", feil_melding="Something's not right, try again"
-            )
+                return render_template(
+                    "login.html", feil_melding="Something's not right, try again"
+                )
+                
+        except Exception as e:
+            # Dette tvinger databasefeil ut i terminalen din!
+            print("\n" + "="*50)
+            print("!!! KRAKK I DATABASE-TILKOBLING / LOGIN !!!")
+            import traceback
+            traceback.print_exc()
+            print("="*50 + "\n")
+            return f"Feil oppsto under innlogging: {str(e)}", 500
+            
+    return render_template('login.html')
 
-    return render_template("login.html")
+# TEST PRINT    
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+
+
+
+
+
+
 
 
 # !CUSTOMERS!
