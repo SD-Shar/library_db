@@ -8,30 +8,17 @@ from waitress import serve
 
 load_dotenv()  # Load environment data from .env
 
-
+ 
 app = Flask(__name__)
-app.secret_key=os.environ.get("APP_SECRET_KEY")
-
-# def get_connection():
-#     """Returnerer en aktiv database-tilkobling basert på miljøvariabler."""
-#     return mysql.connector.connect(
-#         host=os.environ.get("DB_HOST", "127.0.0.1"),
-#         user=os.environ.get("DB_USER"),
-#         password=os.environ.get("DB_PASSWORD"),
-#         use_pure=True,
-#         database=os.environ.get("DB_NAME"),
-
-#     )
-
-
+app.secret_key=os.environ.get("APP_SECRET_KEY") or 'backup_secret_key'
 def get_connection():
     """Returnerer en aktiv database-tilkobling basert på miljøvariabler."""
     return mysql.connector.connect(
-        host="127.0.0.1",
-        user="absolute_solver",
-        password="silly",
+        host=os.environ.get("DB_HOST", "127.0.0.1"),
+        user=os.environ.get("DB_USER"),
+        password=os.environ.get("DB_PASSWORD"),
         use_pure=True,
-        database="library_db"
+        database=os.environ.get("DB_NAME"),
 
     )
 
@@ -67,43 +54,6 @@ def signup():
 
     return render_template("signup.html")
 
-
-# # LOGIN
-# @app.route("/login", methods=["GET", "POST"])
-# def login():
-#     if request.method == "POST":
-#         epost = request.form["epost"]
-#         passord = request.form["passord"]
-
-#         conn = get_connection()
-#         cursor = conn.cursor(dictionary=True)
-#         cursor.execute("SELECT * FROM brukere WHERE epost = %s", (epost,))
-#         brukere = cursor.fetchone()
-#         cursor.close()
-#         conn.close()
-
-#         if brukere and check_password_hash(brukere["passord_hash"], passord):
-#             # if brukere and brukere['passord_hash'] == passord:
-#             session["bruker_id"] = brukere["id"]
-#             session["epost"] = brukere["epost"]
-#             session["rolle"] = brukere["rolle"]
-
-#             print(brukere["rolle"])
-
-#             if brukere["rolle"] == "admin":
-#                 return redirect(url_for("homepage_lib"))
-#             else:
-#                 return redirect(url_for("browse_kunde"))
-#         else:
-#             return render_template(
-#                 "login.html", feil_melding="Something's not right, try again"
-#             )
-
-#     return render_template("login.html")
-
-
-# TEST PRINT
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
