@@ -11,14 +11,25 @@ load_dotenv()  # Load environment data from .env
  
 app = Flask(__name__)
 app.secret_key=os.environ.get("APP_SECRET_KEY") or 'backup_secret_key'
+# def get_connection():
+#     """Returnerer en aktiv database-tilkobling basert på miljøvariabler."""
+#     return mysql.connector.connect(
+#         host=os.environ.get("DB_HOST", "127.0.0.1"),
+#         user=os.environ.get("DB_USER"),
+#         password=os.environ.get("DB_PASSWORD"),
+#         use_pure=True,
+#         database=os.environ.get("DB_NAME"),
+#     )
+
+
 def get_connection():
     """Returnerer en aktiv database-tilkobling basert på miljøvariabler."""
     return mysql.connector.connect(
-        host=os.environ.get("DB_HOST", "127.0.0.1"),
-        user=os.environ.get("DB_USER"),
-        password=os.environ.get("DB_PASSWORD"),
+        host="127.0.0.1",
+        user="absolute_solver",
+        password="silly",
         use_pure=True,
-        database=os.environ.get("DB_NAME"),
+        database="library_db"
 
     )
 
